@@ -1,8 +1,10 @@
-# AI Company Atlas
+# Oh My AI Company
 
-AI Company Atlas 是一个面向 AI 产品、AI infra、企业 Agent 和垂直 AI 公司的开放研究库。
+Oh My AI Company 是一个持续更新的 AI 公司研究库，覆盖 AI 产品、AI infra、企业 Agent 和垂直 AI 公司。
 
 它不是一组零散的 Markdown 报告，也不是公司排行榜。这个 vault 更接近一张持续生长的 AI company market map：把公司、产品、创始人、投资机构、融资事件、流量信号、社区反馈、媒体报道、竞品关系和研究判断沉淀成可查询、可追溯、可继续扩展的对象网络。
+
+英文一句话：A living atlas of AI companies, products, founders, investors, traffic signals, and research notes.
 
 底层知识库产品是 [Memex](https://github.com/yan5xu/memex)。Memex 是 local-first 的对象图谱知识库：SQLite 存 schema/object/link，Markdown 存正文。你可以把它理解为“结构化数据库 + 可读研究笔记 + 图谱关系”的组合。
 

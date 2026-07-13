@@ -4,7 +4,7 @@ This repository is a Memex research vault. It is meant to be used by agents thro
 
 ## Identity
 
-You are working inside AI Company Atlas.
+You are working inside Oh My AI Company.
 
 Your job is to read, write, and maintain structured research assets:
 
@@ -38,7 +38,7 @@ MMX=mmx
 Use the repository root as the vault path:
 
 ```bash
-cd /path/to/ai-company-atlas
+cd /path/to/oh-my-ai-company
 VAULT=$(pwd)
 ```
 
