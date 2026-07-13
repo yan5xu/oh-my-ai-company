@@ -1,6 +1,6 @@
-# AI Company Research Vault
+# AI Company Atlas
 
-AI Company Research Vault 是一个面向 AI 产品、AI infra、企业 Agent 和垂直 AI 公司的开放研究库。
+AI Company Atlas 是一个面向 AI 产品、AI infra、企业 Agent 和垂直 AI 公司的开放研究库。
 
 它不是一组零散的 Markdown 报告，也不是公司排行榜。这个 vault 更接近一张持续生长的 AI company market map：把公司、产品、创始人、投资机构、融资事件、流量信号、社区反馈、媒体报道、竞品关系和研究判断沉淀成可查询、可追溯、可继续扩展的对象网络。
 
