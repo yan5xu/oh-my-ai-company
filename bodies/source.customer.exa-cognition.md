@@ -1,6 +1,6 @@
 # Exa customer case: Cognition
 
-S1 official customer case page, fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial because page text is short.
+S1 official customer case page, fetched 2026-07-08 via `pinixc browser read`. Quality partial because page text is short.
 
 Facts:
 - Exa says Cognition uses Exa to power web search capability across agentic products.

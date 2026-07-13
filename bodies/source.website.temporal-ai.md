@@ -1,6 +1,6 @@
 # Temporal for AI
 
-S1 official solution page, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official solution page, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Temporal calls itself the orchestrator for AI applications.

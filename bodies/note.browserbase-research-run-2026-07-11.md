@@ -8,7 +8,7 @@
 2. 搜 Google：找到官方 Series B、Stagehand/Director、Contrary、LinkedIn、Product Hunt、HN 等线索。
 3. 抓官网：Browserbase 首页 `browser read` 只返回一句话，不够用；改用 Stagehand/Director 页面 snapshot 获取正文。
 4. 抓视觉：Stagehand、Director、Product Hunt 截图导入 assets。
-5. 抓流量：用 Similarweb 中转站查 `browserbase.com`，拿到 H1 全流量、渠道、关键词、相似站点。
+5. 抓流量：用 Similarweb 查 `browserbase.com`，拿到 H1 全流量、渠道、关键词、相似站点。
 6. 抓开发者信号：用 GitHub CLI 查 `browserbase/stagehand` stars/forks/pushedAt。
 7. 抓社区：HN adapter thread 命令失败，改用 browser read 抓主帖；评论未完整拿到，标 partial。
 8. 抓 LinkedIn：先误查 `company/browserbase`，发现是错实体；从 Product Hunt 链接和 Google 搜出正确 slug `browserbasehq`。

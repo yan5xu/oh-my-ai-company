@@ -1,6 +1,6 @@
 # HN post: Introduction to agent signals
 
-S3 community metadata source, fetched 2026-07-08 via `/tmp/pinixc site hackernews`.
+S3 community metadata source, fetched 2026-07-08 via `pinixc site hackernews`.
 
 Facts:
 - HN item id 43885600.

@@ -1,6 +1,6 @@
 # Minds by Animoca Brands X profile
 
-Source: /tmp/pinixc site twitter user --screen_name hellominds_
+Source: pinixc site twitter user --screen_name hellominds_
 Collected: 2026-07-09
 Evidence: S2 platform profile metadata
 

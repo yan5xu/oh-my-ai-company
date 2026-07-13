@@ -1,6 +1,6 @@
 # Krystal Hu X timeline snapshot：AI/VC 报道主题
 
-采集时间：2026-07-08。来源：/tmp/pinixc site twitter tweets --screen_name readkrystalhu --count 40，实际返回 18 条近期 tweets/retweets。
+采集时间：2026-07-08。来源：pinixc site twitter tweets --screen_name readkrystalhu --count 40，实际返回 18 条近期 tweets/retweets。
 
 ## 主题聚类
 

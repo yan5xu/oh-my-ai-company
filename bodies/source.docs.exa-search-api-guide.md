@@ -1,6 +1,6 @@
 # Exa Search API guide
 
-S1 official docs, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official docs, fetched 2026-07-08 via `pinixc browser read`.
 
 Product details:
 - Exa is a custom search engine built for AIs.

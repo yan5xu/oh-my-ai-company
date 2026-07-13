@@ -40,13 +40,13 @@
 横向看规模和渠道：
 
 ```bash
-/tmp/mmx -C "$VAULT" query traffic.snapshot --select company,monthly_visits,direct_pct,organic_search_pct,paid_search_pct,organic_social_pct,paid_social_pct --where platform=Similarweb
+mmx -C "$VAULT" query traffic.snapshot --select company,monthly_visits,direct_pct,organic_search_pct,paid_search_pct,organic_social_pct,paid_social_pct --where platform=Similarweb
 ```
 
 看某家公司历史：
 
 ```bash
-/tmp/mmx -C "$VAULT" query traffic.snapshot --select title,period_start,period_end,monthly_visits,direct_pct,organic_search_pct --where company=company.hyperbrowser
+mmx -C "$VAULT" query traffic.snapshot --select title,period_start,period_end,monthly_visits,direct_pct,organic_search_pct --where company=company.hyperbrowser
 ```
 
 ## 后续再考虑

@@ -1,6 +1,6 @@
 # Fryd Wiatrowski X timeline snapshot：Viktor GTM 与收入信号
 
-采集时间：2026-07-08。来源：/tmp/pinixc site twitter tweets --screen_name frydwia --count 20。
+采集时间：2026-07-08。来源：pinixc site twitter tweets --screen_name frydwia --count 20。
 
 ## 关键信号
 

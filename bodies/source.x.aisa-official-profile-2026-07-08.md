@@ -1,6 +1,6 @@
 # AIsa official X profile
 
-Adapter: `/tmp/pinixc site twitter user --screen_name AIsaOneHQ`
+Adapter: `pinixc site twitter user --screen_name AIsaOneHQ`
 URL: https://x.com/AIsaOneHQ
 Collected: 2026-07-08
 

@@ -1,6 +1,6 @@
 # Ethoswarm X profile
 
-Source: /tmp/pinixc site twitter user --screen_name Ethoswarm
+Source: pinixc site twitter user --screen_name Ethoswarm
 Collected: 2026-07-09
 Evidence: S2 platform profile metadata
 

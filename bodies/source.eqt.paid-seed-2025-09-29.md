@@ -1,6 +1,6 @@
 # EQT Ventures on Paid seed round
 
-S2 investor-side source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S2 investor-side source, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - EQT says Paid raised a $21M Seed led by Lightspeed, with EQT participating again after leading the pre-seed.

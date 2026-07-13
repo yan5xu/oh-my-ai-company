@@ -1,6 +1,6 @@
 # Exa X profile
 
-Fetched 2026-07-08 via `/tmp/pinixc site twitter user --screen_name exaailabs`.
+Fetched 2026-07-08 via `pinixc site twitter user --screen_name exaailabs`.
 
 Adapter result:
 - name: Exa

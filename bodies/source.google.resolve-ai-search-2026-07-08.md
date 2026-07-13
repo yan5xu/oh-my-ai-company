@@ -2,7 +2,7 @@
 
 S4 search/process note, collected 2026-07-08.
 
-Queries run through `/tmp/pinixc site google search`:
+Queries run through `pinixc site google search`:
 - `Resolve AI production debugging multi-agent Lightspeed Series A`
 - `Resolve AI founders LinkedIn production debugging agent`
 

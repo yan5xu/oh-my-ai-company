@@ -1,6 +1,6 @@
 # Adept AI X profile
 
-Source: /tmp/pinixc site twitter user --screen_name AdeptAILabs
+Source: pinixc site twitter user --screen_name AdeptAILabs
 Collected: 2026-07-09
 Evidence: S2 platform profile metadata
 

@@ -1,6 +1,6 @@
 # X profile: Nnamdi Iregbulem
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/whoisnnamdi
 Collected: 2026-07-08
 

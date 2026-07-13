@@ -1,6 +1,6 @@
 # Exa Search API guide for coding agents
 
-S1 official docs, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official docs, fetched 2026-07-08 via `pinixc browser read`.
 
 Important product and GTM details:
 - Endpoint: POST `https://api.exa.ai/search`.

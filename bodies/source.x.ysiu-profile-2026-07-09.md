@@ -1,6 +1,6 @@
 # Yat Siu X profile
 
-Source: /tmp/pinixc site twitter user --screen_name ysiu
+Source: pinixc site twitter user --screen_name ysiu
 Collected: 2026-07-09
 Evidence: S2 platform profile metadata
 

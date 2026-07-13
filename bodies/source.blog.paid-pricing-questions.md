@@ -1,6 +1,6 @@
 # Paid pricing questions article
 
-S1 official Paid blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official Paid blog, fetched 2026-07-08 via `pinixc browser read`.
 
 Notable facts and ideas:
 - Paid says it ran monetization workshops in San Francisco with A16z, Battery Ventures, and General Catalyst for 30+ founders.

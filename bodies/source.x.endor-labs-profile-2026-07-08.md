@@ -1,6 +1,6 @@
 # Endor Labs X profile
 
-Fetched 2026-07-08 via `/tmp/pinixc site twitter user --screen_name endorlabs`.
+Fetched 2026-07-08 via `pinixc site twitter user --screen_name endorlabs`.
 
 Adapter result:
 - name: Endor Labs

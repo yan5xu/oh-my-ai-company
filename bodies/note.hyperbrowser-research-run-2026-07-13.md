@@ -10,7 +10,7 @@
 6. 用 Reddit 看生产化风险，尤其 long-running browser agent 的稳定性。
 7. 补 X/LinkedIn 人和公司触点，能确认的 founder 才入监控，低置信账号不硬挂。
 8. 补中文源：微信/小红书有泛工具传播，linux.do/v2ex 未搜到有效讨论。
-9. 尝试 Similarweb；第一次中转站登录过期，只记录公开摘要，不做流量结构判断。用户重新登录后补抓 overview、流量来源、搜索、受众、类似网站，并升级 Similarweb source。
+9. 尝试 Similarweb；第一次完整 Similarweb 数据视图登录过期，只记录公开摘要，不做流量结构判断。用户重新登录后补抓 overview、流量来源、搜索、受众、类似网站，并升级 Similarweb source。
 
 ## 本轮新增的方法经验
 
@@ -22,7 +22,7 @@
 
 ## 工具缺口
 
-- Similarweb 中转站需要更稳定的登录态检测或重登提醒；这次手动登录后可以正常抓 overview/渠道/搜索/受众/类似网站。
+- Similarweb 需要更稳定的登录态检测或重登提醒；这次手动登录后可以正常抓 overview/渠道/搜索/受众/类似网站。
 - Product Hunt adapter 在搜索页遇到 Cloudflare/security challenge 时只能返回空壳，需要更明确标注 blocked/challenge。
 - 微信 search 能拿结果，但缺少公开文章正文抓取子命令；目前只能做搜索结果快照。
 

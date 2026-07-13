@@ -1,6 +1,6 @@
 # Peter Albert LinkedIn profile
 
-采集时间：2026-07-08。来源：/tmp/pinixc browser open https://de.linkedin.com/in/peter-k-albert，页面可读。
+采集时间：2026-07-08。来源：pinixc browser open https://de.linkedin.com/in/peter-k-albert，页面可读。
 
 LinkedIn 顶卡显示：
 

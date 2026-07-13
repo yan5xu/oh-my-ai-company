@@ -1,6 +1,6 @@
 # Exa official Series C announcement
 
-S1 official blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official blog, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Exa raised $250M Series C at a $2.2B valuation, led by a16z.

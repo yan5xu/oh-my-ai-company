@@ -1,6 +1,6 @@
 # Dust homepage
 
-采集时间：2026-07-09。pinix-edge 修复后，`/tmp/pinixc browser read https://dust.tt/` 可正常读取正文。
+采集时间：2026-07-09。pinix-edge 修复后，`pinixc browser read https://dust.tt/` 可正常读取正文。
 
 官网核心定位：Dust is where people and agents collaborate as co-contributors。页面强调 “Multiplayer collaboration surface”，不是 single-player AI；Dust 给 teams 和 agents 共享访问同一批 knowledge、tools、conversations、notifications。
 

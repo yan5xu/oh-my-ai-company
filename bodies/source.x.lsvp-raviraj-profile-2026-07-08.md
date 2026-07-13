@@ -1,6 +1,6 @@
 # X profile: Raviraj Jain
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/ravirajjain
 Collected: 2026-07-08
 

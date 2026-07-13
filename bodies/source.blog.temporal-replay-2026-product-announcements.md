@@ -1,6 +1,6 @@
 # Temporal Replay 2026 product announcements
 
-S1 official blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official blog, fetched 2026-07-08 via `pinixc browser read`.
 
 New capabilities:
 - Serverless Workers, starting with AWS Lambda.

@@ -1,6 +1,6 @@
 # Paid official seed announcement
 
-S1 official Paid blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official Paid blog, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Paid says it raised a $21M oversubscribed Seed round led by [[investor.lightspeed-venture-partners]], with participation from FUSE and existing investor EQT Ventures.

@@ -1,6 +1,6 @@
 # Fryd Wiatrowski LinkedIn profile
 
-采集时间：2026-07-08。来源：/tmp/pinixc site linkedin profile --username fryderyk-wiatrowski。
+采集时间：2026-07-08。来源：pinixc site linkedin profile --username fryderyk-wiatrowski。
 
 LinkedIn 顶卡显示：Fryd Wiatrowski，Co-founder @Viktor.com，building AI to take unnecessary work off people's plates，Ex-Meta, Oxford，Hiring。关注者约 10,491。
 

@@ -1,6 +1,6 @@
 # Arnon Shimoni personal about page
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`.
+Fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Arnon describes himself as a Copenhagen-based CMO/growth and product leader focused on revenue, monetization, and AI + agents.

@@ -1,6 +1,6 @@
 # Manny Medina X profile
 
-Fetched 2026-07-08 via `/tmp/pinixc site twitter user --screen_name medinism`.
+Fetched 2026-07-08 via `pinixc site twitter user --screen_name medinism`.
 
 Adapter result:
 - name: Manny Medina

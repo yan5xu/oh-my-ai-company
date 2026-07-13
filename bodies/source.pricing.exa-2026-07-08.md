@@ -1,6 +1,6 @@
 # Exa pricing page snapshot
 
-S1 official pricing page, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official pricing page, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Endpoint pricing listed: Search $7 / 1k requests, Deep Search $12 / 1k, Deep-Reasoning Search $15 / 1k, Contents $1 / 1k pages, Monitors $15, Answer $5.

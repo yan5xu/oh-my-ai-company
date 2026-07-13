@@ -1,6 +1,6 @@
 # Raj Dosanjh LinkedIn profile
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial: LinkedIn page includes navigation/ads, but profile headline and visible fields were captured.
+Fetched 2026-07-08 via `pinixc browser read`. Quality partial: LinkedIn page includes navigation/ads, but profile headline and visible fields were captured.
 
 Visible facts:
 - Name: Raj Dosanjh.

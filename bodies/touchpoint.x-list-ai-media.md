@@ -1,6 +1,6 @@
 # X List: AI Media
 
-私有 X list，用于监控 AI/startup 媒体人、编辑和记者节点。
+X list，用于监控 AI/startup 媒体人、编辑和记者节点。
 
 ## 初始成员
 

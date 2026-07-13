@@ -1,6 +1,6 @@
 # Krystal Hu LinkedIn activity page probe
 
-采集时间：2026-07-08。来源：/tmp/pinixc browser open + snapshot/eval。
+采集时间：2026-07-08。来源：pinixc browser open + snapshot/eval。
 
 ## 结果
 

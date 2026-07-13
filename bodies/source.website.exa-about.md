@@ -1,6 +1,6 @@
 # Exa about page
 
-S1 official source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official source, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Exa calls itself an applied AI lab building a perfect search engine.

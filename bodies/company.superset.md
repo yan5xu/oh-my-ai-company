@@ -54,7 +54,6 @@ Superset 值得持续关注，不只是因为它是 YC P26 公司，而是因为
 - HN 12-01: https://news.ycombinator.com/item?id=46109015
 - HN 12-23: https://news.ycombinator.com/item?id=46368739
 - HN Launch: https://news.ycombinator.com/item?id=48236770
-- Wiki dossier: https://qcn00ct2rf6h.feishu.cn/wiki/OZk6w4FJkiNRLPka4P1cxG5jnDJ
 
 ## 待补
 

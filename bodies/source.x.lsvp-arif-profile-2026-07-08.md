@@ -1,6 +1,6 @@
 # X profile: Arif Janmohamed
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/arifj
 Collected: 2026-07-08
 

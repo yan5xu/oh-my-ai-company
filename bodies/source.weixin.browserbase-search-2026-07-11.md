@@ -6,8 +6,8 @@
 
 2026-07-11 复测情况：
 
-- `/tmp/pinixc site weixin search --profile default --query Browserbase --count 5` 仍返回 `Sogou anti-bot or network fetch failed`。
-- 但直接 `/tmp/pinixc browser open 'https://weixin.sogou.com/weixin?type=2&query=Browserbase' --profile default` 可以打开搜索页，标题为 `Browserbase的相关微信公众号文章 – 搜狗微信搜索`，页面显示约 419 条结果。
+- `pinixc site weixin search --profile default --query Browserbase --count 5` 仍返回 `Sogou anti-bot or network fetch failed`。
+- 但直接 `pinixc browser open 'https://weixin.sogou.com/weixin?type=2&query=Browserbase' --profile default` 可以打开搜索页，标题为 `Browserbase的相关微信公众号文章 – 搜狗微信搜索`，页面显示约 419 条结果。
 - `browser read` 能抓到搜索结果摘要，但不是公众号文章全文。
 
 可见搜索结果包括：

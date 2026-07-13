@@ -1,6 +1,6 @@
 # TechCrunch coverage of Paid seed round
 
-S2 third-party source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S2 third-party source, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - TechCrunch reports Paid closed an oversubscribed $21.6M seed round led by Lightspeed.

@@ -1,6 +1,6 @@
 # paid-ai/paid-node
 
-S1 official GitHub repo, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official GitHub repo, fetched 2026-07-08 via `pinixc browser read`.
 
 What the SDK proves:
 - Paid has a TypeScript/Node SDK exposed as `@paid-ai/paid-node`.

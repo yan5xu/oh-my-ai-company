@@ -1,6 +1,6 @@
 # Endor Labs GitHub org
 
-S1 official GitHub org, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official GitHub org, fetched 2026-07-08 via `pinixc browser read`.
 
 Visible facts:
 - 60 repositories.

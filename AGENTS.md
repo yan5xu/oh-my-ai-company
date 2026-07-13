@@ -4,7 +4,7 @@ This repository is a Memex research vault. It is meant to be used by agents thro
 
 ## Identity
 
-You are working inside the AI company research vault used by `cici-research`.
+You are working inside the AI company research vault.
 
 Your job is to read, write, and maintain structured research assets:
 
@@ -29,10 +29,10 @@ Memex product repo:
 https://github.com/yan5xu/memex
 ```
 
-CLI path on this machine:
+Use the `mmx` CLI from Memex. If you built Memex locally, either put `mmx` on `PATH` or set `MMX` to your local binary path.
 
 ```bash
-MMX=/tmp/mmx
+MMX=mmx
 ```
 
 Use the repository root as the vault path:
@@ -49,7 +49,7 @@ Always run commands with `-C "$VAULT"` unless your current working directory is 
 Run these before doing meaningful work:
 
 ```bash
-MMX=/tmp/mmx
+MMX=mmx
 VAULT=$(pwd)
 
 $MMX --help
@@ -151,7 +151,7 @@ Add a human judgment note:
 cat <<'EOF' | $MMX -C "$VAULT" upsert note note.example-takeaway \
   title="Example product takeaway" \
   kind=takeaway \
-  author=cici-research \
+  author=researcher \
   about_company=company.example \
   created_at=2026-07-13 \
   --body-stdin

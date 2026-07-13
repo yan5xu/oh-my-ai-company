@@ -1,6 +1,6 @@
 # Launch HN: Exa (YC S21) - The web as a database
 
-S3 community source, fetched 2026-07-08 via `/tmp/pinixc site hackernews thread --id 43906841`.
+S3 community source, fetched 2026-07-08 via `pinixc site hackernews thread --id 43906841`.
 
 Launch metrics:
 - Score: 412.

@@ -1,6 +1,6 @@
 # X profile: Guru Chahal
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/guruchahal
 Collected: 2026-07-08
 

@@ -1,6 +1,6 @@
 # X profile: Ravi Mhatre
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/ravi_lsvp
 Collected: 2026-07-08
 

@@ -1,6 +1,6 @@
 # Exa customer case: HubSpot
 
-S1 official customer case page, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official customer case page, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - HubSpot uses Exa to connect Breeze Assistant and Agents to live web intelligence across CRM workflows.

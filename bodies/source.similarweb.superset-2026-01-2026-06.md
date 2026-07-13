@@ -1,6 +1,6 @@
 # Similarweb: superset.sh traffic Jan-Jun 2026
 
-通过 Similarweb 中转站读取，范围 Jan 2026 - Jun 2026，全球，所有流量，未包含子域名。
+通过 Similarweb 读取，范围 Jan 2026 - Jun 2026，全球，所有流量，未包含子域名。
 
 ## 规模与参与度
 

@@ -1,6 +1,6 @@
 # Sequoia podcast: Pricing in the AI Era
 
-S2 podcast/transcript source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S2 podcast/transcript source, fetched 2026-07-08 via `pinixc browser read`.
 
 Important ideas from Manny Medina:
 - Best AI application companies are “hedgehog” businesses: narrow, high-friction workflows rather than broad platforms.

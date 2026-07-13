@@ -6,7 +6,7 @@ Google 搜索结果能定位 Reuters 作者页：https://www.reuters.com/authors
 
 ## 抓取限制
 
-/tmp/pinixc browser read 打开该 Reuters 作者页时返回空壳，没有可用正文；因此这里仅作为 Reuters 作者页存在与入口元信息记录，不把空壳内容当正文证据。
+pinixc browser read 打开该 Reuters 作者页时返回空壳，没有可用正文；因此这里仅作为 Reuters 作者页存在与入口元信息记录，不把空壳内容当正文证据。
 
 ## 研究价值
 

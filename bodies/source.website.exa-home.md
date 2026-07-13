@@ -1,6 +1,6 @@
 # Exa homepage
 
-S1 official website, fetched 2026-07-08 via `/tmp/pinixc browser open` and `browser read`.
+S1 official website, fetched 2026-07-08 via `pinixc browser open` and `browser read`.
 
 Visible facts:
 - Title: Exa | Search API for AI Agents — Real-Time Web Data.

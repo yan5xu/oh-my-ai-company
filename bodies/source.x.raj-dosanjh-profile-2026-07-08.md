@@ -1,6 +1,6 @@
 # Raj Dosanjh X profile
 
-Fetched 2026-07-08 via `/tmp/pinixc site twitter user --screen_name RajIsTheWorst`.
+Fetched 2026-07-08 via `pinixc site twitter user --screen_name RajIsTheWorst`.
 
 Adapter result:
 - name: Raj Dosanjh

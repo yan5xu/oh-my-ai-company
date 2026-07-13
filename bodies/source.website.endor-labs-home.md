@@ -1,6 +1,6 @@
 # Endor Labs homepage / AURI
 
-S1 official website, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official website, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Endor Labs positions itself as an agentic application security platform for AI-generated and human-written code.

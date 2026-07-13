@@ -1,6 +1,6 @@
 # Viktor X profile
 
-采集时间：2026-07-08。来源：/tmp/pinixc site twitter user --screen_name viktor__com。
+采集时间：2026-07-08。来源：pinixc site twitter user --screen_name viktor__com。
 
 Viktor 官方 X 账号 bio：i live in Slack and Teams. i do the work nobody owns. not a tool. a hire.
 

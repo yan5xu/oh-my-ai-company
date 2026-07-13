@@ -1,6 +1,6 @@
 # Temporal Series D announcement
 
-S1 official blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official blog, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Temporal raised $300M Series D at $5B post-money valuation.

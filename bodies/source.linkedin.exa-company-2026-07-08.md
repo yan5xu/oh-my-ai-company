@@ -1,6 +1,6 @@
 # Exa LinkedIn company page
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial: LinkedIn output is abbreviated but company overview was captured.
+Fetched 2026-07-08 via `pinixc browser read`. Quality partial: LinkedIn output is abbreviated but company overview was captured.
 
 Visible facts:
 - Exa describes itself as an applied AI research lab organizing human knowledge, starting with the web.

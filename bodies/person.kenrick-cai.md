@@ -46,7 +46,7 @@ Kenrick 已经不在 Forbes。个人网站显示他 until June 2024 是 Forbes s
 
 Kenrick 的 X 深挖记录见 [[note.kenrick-cai-x-deep-dive-2026-07-08]]。
 
-已加入私有 X list：[[touchpoint.x-list-ai-media]]。
+已加入X list：[[touchpoint.x-list-ai-media]]。
 
 关键 X 证据：Sarah Guo 曾用 HeyGen avatar demo 放大 Forbes / Kenrick 的报道：[[source.x.sarah-guo-heygen-forbes-amplification-2023-11-29]]；Sarah 也在 Conviction launch 当天感谢 Kenrick：[[source.x.sarah-guo-thanks-kenrick-conviction-launch-2022-10-04]]。
 

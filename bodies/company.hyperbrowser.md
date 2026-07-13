@@ -95,7 +95,7 @@ Reddit 上有一条关于 Hyperbrowser vs Browserbase/Playwright long-running ag
 
 ## 流量与规模
 
-Similarweb 中转站登录恢复后，补到了 Jan 2026 - Jun 2026 的完整数据。hyperbrowser.ai 6 个月总访问量 400,144，月均访问 25,724，月独立访客 14,719，访问持续时间 00:02:13，页面数/访问 2.41，跳出率 54.44%。设备分布较均衡：Desktop 51.63%，Mobile Web 48.37%。
+Similarweb 登录恢复后，补到了 Jan 2026 - Jun 2026 的完整数据。hyperbrowser.ai 6 个月总访问量 400,144，月均访问 25,724，月独立访客 14,719，访问持续时间 00:02:13，页面数/访问 2.41，跳出率 54.44%。设备分布较均衡：Desktop 51.63%，Mobile Web 48.37%。
 
 渠道上，它不像纯投放产品，也不像成熟内容 SEO 站，更像开发者 GTM 混合流：直接 39.51%、自然搜索 37.80%、自然社媒 11.73%、外链 8.91%、生成式 AI 1.28%、邮件 0.60%。详细来源里 Direct 59.74%、Google Search 23.79%、X-twitter 5.84%，GitHub、Reddit、HN、There’s An AI For That、ChatGPT 都有小比例贡献。
 
@@ -136,6 +136,6 @@ Similarweb 中转站登录恢复后，补到了 Jan 2026 - Jun 2026 的完整数
 ## 证据分级
 
 S1：Hyperbrowser 官网、docs、YC company/launch、GitHub repo、LinkedIn/X adapter 抓取。
-S2：HN launch 讨论、Similarweb 中转站数据。
+S2：HN launch 讨论、Similarweb 数据。
 S3：Reddit、小红书、微信搜索结果与中文工具介绍。
 S4：未能抓取正文或只搜到结果页的材料，不能作为事实来源。

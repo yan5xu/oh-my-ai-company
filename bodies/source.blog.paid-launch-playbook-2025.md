@@ -1,6 +1,6 @@
 # Paid launch playbook
 
-S1 official Paid blog, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official Paid blog, fetched 2026-07-08 via `pinixc browser read`.
 
 Launch timeline disclosed:
 - March 25, 2025: launch party.

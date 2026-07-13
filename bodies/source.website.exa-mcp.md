@@ -1,6 +1,6 @@
 # Exa MCP Server
 
-S1 official source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official source, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Exa MCP connects Claude, Cursor, VS Code and other AI tools to Exa search, code search, and research capabilities.

@@ -1,6 +1,6 @@
 # Temporal docs homepage
 
-S1 official docs, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official docs, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Temporal is described as an open-source platform for reliable applications.

@@ -1,6 +1,6 @@
 # Temporal LinkedIn company page
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial due LinkedIn page boilerplate.
+Fetched 2026-07-08 via `pinixc browser read`. Quality partial due LinkedIn page boilerplate.
 
 Visible facts:
 - Temporal develops and distributes the world's leading open-source durable execution system.

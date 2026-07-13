@@ -1,6 +1,6 @@
 # X profile: Alexander Schmitt
 
-Adapter: /tmp/pinixc site twitter user
+Adapter: pinixc site twitter user
 URL: https://x.com/alex_schmitti
 Collected: 2026-07-08
 

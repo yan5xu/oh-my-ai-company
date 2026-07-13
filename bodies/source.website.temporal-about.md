@@ -1,6 +1,6 @@
 # Temporal about page
 
-S1 official source, fetched 2026-07-08 via `/tmp/pinixc browser read`.
+S1 official source, fetched 2026-07-08 via `pinixc browser read`.
 
 Facts:
 - Temporal is an open-source company focused on programming languages, distributed systems, and cloud services.

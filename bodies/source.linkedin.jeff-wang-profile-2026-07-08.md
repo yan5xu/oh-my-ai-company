@@ -1,6 +1,6 @@
 # Jeffrey Wang LinkedIn profile
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial due LinkedIn page boilerplate.
+Fetched 2026-07-08 via `pinixc browser read`. Quality partial due LinkedIn page boilerplate.
 
 Visible facts:
 - Name: Jeffrey Wang.

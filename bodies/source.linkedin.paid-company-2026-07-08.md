@@ -1,6 +1,6 @@
 # Paid LinkedIn company page
 
-Fetched 2026-07-08 via `/tmp/pinixc browser read`. Quality partial: LinkedIn output contains a very large amount of page/app boilerplate, but the company header and overview fields were captured.
+Fetched 2026-07-08 via `pinixc browser read`. Quality partial: LinkedIn output contains a very large amount of page/app boilerplate, but the company header and overview fields were captured.
 
 Visible facts:
 - Name: Paid.

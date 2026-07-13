@@ -1,6 +1,6 @@
 # Temporal X profile
 
-Fetched 2026-07-08 via `/tmp/pinixc site twitter user --screen_name temporalio`.
+Fetched 2026-07-08 via `pinixc site twitter user --screen_name temporalio`.
 
 Adapter result:
 - name: Temporal
