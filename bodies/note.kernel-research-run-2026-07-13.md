@@ -30,7 +30,7 @@ Kernel 至少有三个 launch：4 月技术 artifact、8 月 YC 产品 launch、
 ## 工具问题
 
 - Kernel 首页在 browser 中只显示背景，read/snapshot 没有正文；改用官方 docs/blog/metadata，并已反馈浏览器工具 owner。
-- Reddit adapter 的相对 URL 解析失败；用搜索引擎补查，但不能把补查不充分写成“无人讨论”。
+- Reddit adapter 最初因相对 URL 解析失败；工具修复后已用四组查询复跑，执行成功但只得到 0 条或 Linux/kernel 同名噪声。最终报告据此从“工具覆盖不足”更新为“原生搜索未命中聚焦讨论”，仍不写成“无人讨论”。
 - LinkedIn employees 返回错误的推荐卡片；改用公开人物搜索和官方 team image 交叉验证，已反馈 site owner。
 - X list 连续并行写入时出现 target closed；串行重试更稳。
 - GitHub 当前数据可取，但 star history 没有可靠接口，本轮明确缺失，不自行拟合。

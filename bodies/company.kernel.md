@@ -132,7 +132,7 @@ Kernel 不是一个替用户完成任务的终端 agent，而是给 agent 提供
 - Hacker News 有一个高质量技术讨论，但泛产品提交反响很弱。
 - X 上 YC launch 和融资 thread 有明显传播；公司账号截至采集时约 3,074 followers，两位创始人各约 2,000 followers。
 - 没有找到匹配 Kernel 官方产品的 Product Hunt listing，搜索结果主要是同名无关产品。只能写“本轮未找到”，不能推断它从未发布过。
-- Reddit 搜索 adapter 本轮故障；通过搜索引擎补查后仍未得到有实质内容的聚焦讨论，因此不能得出“Reddit 没人讨论”的绝对结论。
+- Reddit 原生搜索修复后复跑成功：`onkernel browser` 为 0 条，其余 Kernel 相关查询返回的都是 Linux/kernel 或泛 AI 基础设施同名噪声，没有取得可引用的产品讨论。它只能说明本轮未命中，不能证明 Reddit 绝对无人讨论。
 - 微信、V2EX、Linux.do、即刻和小红书的聚焦搜索没有形成可引用的 Kernel 用户反馈；中文内容更多是在 browser-agent 工具清单中顺带提及。当前中文品牌心智偏弱，但这不是产品使用量证据。
 
 ## 竞品地图
