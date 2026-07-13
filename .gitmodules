@@ -1,0 +1,3 @@
+[submodule "site/vendor/memex"]
+	path = site/vendor/memex
+	url = https://github.com/yan5xu/memex.git

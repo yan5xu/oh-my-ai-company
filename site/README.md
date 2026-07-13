@@ -11,10 +11,10 @@ Production URL: <https://companies.yan5xu.ai>
 - `scripts/export-vault.mjs` translates only manifest-approved objects, strong field links, sanitized company bodies, and source metadata into D1 SQL.
 - D1 serves structured objects, Markdown bodies, links, and public search data.
 - R2 serves vault images and other public media.
-- A Cloudflare Worker exposes a narrow read-only API.
-- React, TanStack Query/Table, Tailwind, shadcn-style primitives, and React Flow render the public UI.
+- A Cloudflare Worker exposes the read-only subset of the Memex API protocol.
+- `vendor/memex` pins the canonical Memex frontend as a Git submodule. The public site builds the same React, TanStack, shadcn-style, Markdown, and Graph workspace instead of maintaining a second UI.
 
-The public Worker does not expose Memex's local `/api/run`, editing, uploads, arbitrary SQL, internal notes/methods, weak body-mention edges, or unreviewed assets.
+The public Worker accepts read-only `/api/run` commands needed by the canonical UI. It rejects editing, uploads, arbitrary SQL, internal notes/methods, weak body-mention edges, and unreviewed assets.
 
 ## Publication Boundary
 
@@ -49,23 +49,27 @@ Install dependencies:
 ```bash
 cd site
 npm install
+git submodule update --init --recursive
 ```
 
 ## Local Development
 
-Run the Worker against the remote read-only data in one terminal:
+Prepare the local D1 projection:
 
 ```bash
-npm run worker:dev
+npm run publication:check
+npx wrangler d1 migrations apply oh-my-ai-company-prod --local
+npx wrangler d1 execute oh-my-ai-company-prod --local --file generated/vault.sql
 ```
 
-Run Vite in another terminal:
+Build the canonical Memex UI and start the local Worker:
 
 ```bash
+npm run build
 npm run dev
 ```
 
-Open <http://127.0.0.1:5173>.
+Open <http://127.0.0.1:8788>.
 
 ## Publish Updated Vault Data
 
@@ -112,6 +116,8 @@ npm run publish
 
 ```text
 GET /api/health
+GET /api/info
+POST /api/run
 GET /api/meta
 GET /api/types
 GET /api/objects?type=company&q=browser&limit=50&offset=0
@@ -120,14 +126,15 @@ GET /api/graph?center=company.browserbase&depth=1
 GET /media/assets/:path
 ```
 
-Browser automation is available as `window.ohMyAI`:
+The public UI exposes the same browser automation API as Memex:
 
 ```js
-window.ohMyAI.state()
-window.ohMyAI.selectType("investor")
-window.ohMyAI.search("browser")
-window.ohMyAI.openObject("company.browserbase")
-window.ohMyAI.openGraph("company.browserbase")
-window.ohMyAI.setGraphTypeVisible("source.item", true)
-window.ohMyAI.setLanguage("en")
+window.memex.state()
+window.memex.selectType("investor")
+window.memex.setFilter("browser")
+window.memex.openObject("company.browserbase")
+window.memex.openGraph()
+window.memex.graphWorkspace.setView("portfolio")
+window.memex.graphWorkspace.setCenter("investor.lightspeed-venture-partners")
+window.memex.setLanguage("en")
 ```

@@ -27,6 +27,20 @@
   "concept_policy": {
     "status": ["active"]
   },
+  "graph_view_overrides": {
+    "company-research-map": {
+      "description": "公司一屏全景：证据、触点、流量、创始人、投资人和关联概念。"
+    },
+    "person-network": {
+      "description": "人物全景：关联公司、公开证据和持续触点。"
+    },
+    "concept-evidence": {
+      "description": "概念与模式的公开证据及相关公司。"
+    },
+    "source-trail": {
+      "description": "从单条证据追到相关主体、触点、投资关系和概念。"
+    }
+  },
   "field_allowlist": {
     "company": ["name", "slug", "founders", "status", "one_liner", "category", "yc_url", "website", "launch_date", "title", "tags"],
     "person": ["name", "role", "founded_companies", "bio", "x_url", "linkedin_url", "title"],

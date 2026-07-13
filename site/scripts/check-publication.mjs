@@ -42,5 +42,26 @@ for (const object of objects) {
   }
 }
 
+const publicTypes = new Set(Object.keys(manifest.field_allowlist));
+const typeDefinitions = JSON.parse(scalar("SELECT value FROM metadata WHERE key='type_definitions'"));
+for (const type of typeDefinitions) {
+  assert(publicTypes.has(type.id), `private type definition ${type.id} is present`);
+  for (const field of type.fields || []) {
+    assert((manifest.field_allowlist[type.id] || []).includes(field.name), `private field ${type.id}.${field.name} is present`);
+    assert(!field.target_type || publicTypes.has(field.target_type), `field ${type.id}.${field.name} targets private type ${field.target_type}`);
+  }
+}
+
+const graphViews = JSON.parse(scalar("SELECT value FROM metadata WHERE key='graph_views'"));
+for (const view of graphViews.views || []) {
+  assert(publicTypes.has(view.root_type), `graph view ${view.id} has private root type ${view.root_type}`);
+  assert(!/(笔记|方法)/.test(view.description || ""), `graph view ${view.id} describes unpublished data`);
+  for (const path of view.paths || []) {
+    for (const step of path.steps || []) assert(publicTypes.has(step.target_type), `graph view ${view.id} targets private type ${step.target_type}`);
+  }
+  for (const type of Object.keys(view.nodes || {})) assert(publicTypes.has(type), `graph view ${view.id} renders private node type ${type}`);
+  for (const type of Object.keys(view.bridges || {})) assert(publicTypes.has(type), `graph view ${view.id} folds private bridge type ${type}`);
+}
+
 rmSync(db, { force: true });
 console.log(`Publication check passed: ${manifest.companies.length} companies, ${assets.length} assets`);

@@ -37,6 +37,15 @@ function readBody(bodyPath) {
 }
 
 const types = query("SELECT id, name, description FROM types ORDER BY id");
+const allFields = query(`
+  SELECT id, type_id, name, kind, required, unique_value, enum_json, target_type, position, description
+  FROM fields ORDER BY type_id, position, name
+`).map((field) => ({
+  ...field,
+  required: Boolean(field.required),
+  unique: Boolean(field.unique_value),
+  enum_values: parseJSON(field.enum_json, null)
+}));
 const allObjects = query(`
   SELECT o.id, o.type_id, o.title, o.body_path, o.created_at, o.updated_at,
     COALESCE((
@@ -201,6 +210,65 @@ function publicBody(object, fields) {
 
 const objects = [...selected].map((id) => objectByID.get(id)).sort((a, b) => a.id.localeCompare(b.id));
 const publishedTypes = new Set(objects.map((object) => object.type_id));
+const typeOrder = ["company", "investor", "investment", "person", "concept", "source.item", "touchpoint", "traffic.snapshot"];
+const typeDefinitions = types
+  .filter((type) => publishedTypes.has(type.id))
+  .sort((a, b) => typeOrder.indexOf(a.id) - typeOrder.indexOf(b.id))
+  .map((type) => ({
+    ...type,
+    fields: allFields
+      .filter((field) => field.type_id === type.id)
+      .filter((field) => (manifest.field_allowlist[type.id] || []).includes(field.name))
+      .filter((field) => !field.target_type || publishedTypes.has(field.target_type))
+      .map(({ enum_json: _enumJSON, unique_value: _uniqueValue, ...field }) => ({
+        ...field,
+        enum_values: Array.isArray(field.enum_values) ? field.enum_values : undefined,
+        target_type: field.target_type || undefined
+      }))
+  }));
+
+function publicGraphViews() {
+  const source = JSON.parse(readFileSync(resolve(vault, "memex.graph-views.json"), "utf8"));
+  const views = (source.views || []).flatMap((view) => {
+    if (!publishedTypes.has(view.root_type)) return [];
+    const paths = (view.paths || []).filter((path) => {
+      let currentType = view.root_type;
+      for (const step of path.steps || []) {
+        const targetType = step.target_type;
+        if (!publishedTypes.has(targetType)) return false;
+        const relationKey = step.direction === "out"
+          ? `${currentType}:${step.relation}:${targetType}`
+          : `${targetType}:${step.relation}:${currentType}`;
+        if (!allowedRelations.has(relationKey)) return false;
+        currentType = targetType;
+      }
+      return (path.steps || []).length > 0;
+    });
+    if (paths.length === 0) return [];
+    const visibleTypes = new Set([view.root_type]);
+    for (const path of paths) for (const step of path.steps || []) visibleTypes.add(step.target_type);
+    const nodes = Object.fromEntries(Object.entries(view.nodes || {}).flatMap(([type, template]) => {
+      if (!visibleTypes.has(type)) return [];
+      const allowed = new Set(["id", "title", ...(manifest.field_allowlist[type] || [])]);
+      return [[type, {
+        ...template,
+        title_field: allowed.has(template.title_field) ? template.title_field : "title",
+        subtitle_field: allowed.has(template.subtitle_field) ? template.subtitle_field : undefined,
+        meta_fields: (template.meta_fields || []).filter((field) => allowed.has(field)),
+        badge_fields: (template.badge_fields || []).filter((field) => allowed.has(field)),
+        image_field: allowed.has(template.image_field) ? template.image_field : undefined
+      }]];
+    }));
+    const bridges = Object.fromEntries(Object.entries(view.bridges || {}).filter(([type]) => visibleTypes.has(type)).map(([type, bridge]) => [type, {
+      ...bridge,
+      label_fields: (bridge.label_fields || []).filter((field) => (manifest.field_allowlist[type] || []).includes(field))
+    }]));
+    return [{ ...view, ...(manifest.graph_view_overrides?.[view.id] || {}), paths, nodes, bridges }];
+  });
+  return { version: source.version || 2, views };
+}
+
+const graphViews = publicGraphViews();
 const fieldsByID = new Map(objects.map((object) => [object.id, publicFields(object)]));
 const bodiesByID = new Map(objects.map((object) => [object.id, publicBody(object, fieldsByID.get(object.id))]));
 const publicAssets = [...assetByPath.values()].sort((a, b) => a.path.localeCompare(b.path));
@@ -242,6 +310,8 @@ lines.push(`INSERT INTO metadata (key,value) VALUES ('company_count',${sqlString
 lines.push(`INSERT INTO metadata (key,value) VALUES ('object_count',${sqlString(objects.length)});`);
 lines.push(`INSERT INTO metadata (key,value) VALUES ('link_count',${sqlString(links.length)});`);
 lines.push(`INSERT INTO metadata (key,value) VALUES ('asset_count',${sqlString(publicAssets.length)});`);
+lines.push(`INSERT INTO metadata (key,value) VALUES ('type_definitions',${sqlString(JSON.stringify(typeDefinitions))});`);
+lines.push(`INSERT INTO metadata (key,value) VALUES ('graph_views',${sqlString(JSON.stringify(graphViews))});`);
 
 const report = {
   manifest_version: manifest.version,
