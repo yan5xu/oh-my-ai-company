@@ -195,6 +195,32 @@ $MMX -C "$VAULT" graph view validate --file memex.graph-views.json
 $MMX -C "$VAULT" graph view apply --file memex.graph-views.json
 ```
 
+## X 监控列表
+
+调研里发现的高价值 X 账号，除了写成 `touchpoint`，还会加入 X list 做持续监控。当前 research 相关列表：
+
+| List | 用途 | URL |
+| --- | --- | --- |
+| `AI Product` | AI 产品/公司官方账号。用于监控 launch、产品更新、客户互动和传播反馈。 | https://x.com/i/lists/2074319950106497342 |
+| `AI Founder` | AI 公司创始人、CEO、核心 operator。用于监控 founder narrative、融资/发布节点、招聘和市场判断。 | https://x.com/i/lists/2074309338932576685 |
+| `AI Media` | AI/startup 记者、编辑、核心媒体节点。用于监控叙事扩散、报道来源和关键媒体人网络。 | https://x.com/i/lists/2074809210010050753 |
+
+原则：
+
+- `touchpoint` 是 vault 内的结构化监控入口，X list 是外部持续阅读入口；两边都要尽量同步。
+- 公司官方账号进 `AI Product`，创始人/CEO/核心 operator 进 `AI Founder`，媒体人/记者/编辑进 `AI Media`。
+- 账号身份没确认时先不要加 list；可以先在正文或 note 里标成 candidate。
+- 不要把一次性 tweet/thread 当 `touchpoint`。单条内容应存为 `source.item`。
+
+常用命令：
+
+```bash
+/tmp/pinixc site twitter list-members --profile default --name "AI Product" --count 20
+/tmp/pinixc site twitter list-add-member --profile default --list_name "AI Product" --screen_name example
+/tmp/pinixc site twitter list-add-member --profile default --list_name "AI Founder" --screen_name founder
+/tmp/pinixc site twitter list-add-member --profile default --list_name "AI Media" --screen_name reporter
+```
+
 ## Web UI
 
 启动：
