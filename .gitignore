@@ -6,3 +6,6 @@
 *.log
 .memex/*.db-shm
 .memex/*.db-wal
+site/generated/
+site/dist/
+site/node_modules/

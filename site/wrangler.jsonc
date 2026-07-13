@@ -1,0 +1,36 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "oh-my-ai-company",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-07-13",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "companies.yan5xu.ai",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/media/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "oh-my-ai-company-prod",
+      "database_id": "df965e67-5e60-40f7-91d7-3b29f9fa8669",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "oh-my-ai-company-assets"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
