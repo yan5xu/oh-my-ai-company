@@ -228,3 +228,26 @@ Hyperagent 的修正见 [[note.hyperagent-product-takeaway-2026-07-10]]。
 - 官网 browser read 失败不等于官网不可用，可以用子页面 read、curl meta、截图交叉补证；但 source 里必须标明主页正文抓取失败。
 - Similarweb overview 的关键数值有时 snapshot 不全，固定补 `document.body.innerText`。
 - 图像资产不只截图，也下载官网 social preview/logo/favicon，增强 body 可读性。
+
+## 2026-07-13 Kernel 调研补充
+
+Kernel 这轮与前面的 Browserbase、Hyperbrowser、Browserless 对照后，补出了三条还需要继续验证的方法。相关过程见 [[note.kernel-research-run-2026-07-13]]。
+
+### API-first infra 的规模必须双轨判断
+
+网站流量衡量的是外部注意力与获客，不等于 API/backend 使用。研究 browser、sandbox、模型服务等 infra 时，至少并列观察：
+
+- 网站 visits、渠道、地域与关键词；
+- API calls、browser sessions、任务数、并发或官方使用规模；
+- 客户案例中的单工作流量级、成功率和节省；
+- GitHub issues/SDK activity、团队增长和岗位结构。
+
+[[company.kernel]] 的官网半年约 15 万 visits，但 Benny 官方案例单月约 88 万 browser sessions。不能用前者否定后者，也不能因为后者来自供应商就不标证据边界。
+
+### Launch 应还原成 sequence
+
+不要只找一个 launch date。Kernel 的 2025 年传播至少分为：开源技术 artifact -> YC 产品视频 -> 融资/路线图。每个节点服务不同目标，并且内容具体度会显著改变社区反馈。
+
+### 最新 founder vision 用来识别产品上移
+
+官网适合确认当前 offer，docs 适合确认能力，founder vision 适合发现公司准备控制的下一层。Kernel 从 cloud browser 延伸到 [[concept.sanctioned-agent-identity]]，如果只读首页和 pricing，会漏掉真正的战略竞争面。

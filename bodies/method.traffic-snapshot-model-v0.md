@@ -52,3 +52,16 @@ mmx -C "$VAULT" query traffic.snapshot --select title,period_start,period_end,mo
 ## 后续再考虑
 
 暂时不在 `company` 上加 latest_monthly_visits / latest_traffic_snapshot。等快照数量多、横向查询频繁后，再考虑加冗余字段做列表展示优化。
+
+## Kernel 样本补充：API-first infra 的解释边界
+
+新增 [[traffic.similarweb.kernel-2026-01-2026-06]] 后，需要明确：`traffic.snapshot` 是网站注意力快照，不是产品调用量快照。
+
+对 API-first 基础设施，报告必须把两类规模拆开：
+
+- **Acquisition / attention**：website visits、referral、search、social、geo。
+- **Usage / workload**：API calls、sessions、jobs、compute hours、客户案例调用量、并发、错误率。
+
+Kernel 的网站流量远低于 Browserbase/Browserless，但官方披露的单客户 sessions 和 browsers launched 很高。正确做法不是二选一，而是同时呈现、标明来源，并解释两者衡量的问题不同。
+
+另外，Similarweb 的 similar sites 只表示流量、搜索或受众邻接。必须再用产品定位、客户任务、输入输出、部署层级和替代关系判断 direct competitor / adjacent / noise。
