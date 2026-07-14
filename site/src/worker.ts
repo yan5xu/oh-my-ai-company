@@ -643,7 +643,11 @@ export default {
     try {
       if (url.pathname.startsWith("/api/")) return await api(request, env);
       if (url.pathname.startsWith("/media/")) return await serveMedia(request, env);
-      return env.ASSETS.fetch(request);
+      const response = await env.ASSETS.fetch(request);
+      if (!response.headers.get("content-type")?.includes("text/html")) return response;
+      const headers = new Headers(response.headers);
+      headers.set("cache-control", "no-cache, no-store, must-revalidate");
+      return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
     } catch (error) {
       console.error(error);
       return json({ error: "internal error" }, { status: 500 });
