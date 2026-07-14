@@ -208,6 +208,19 @@ Hyperagent 的修正见 [[note.hyperagent-product-takeaway-2026-07-10]]。
 
 Raft 是第一个同时强烈暴露 rebrand、官方新指标和横向多 Agent 反方论证的样本。后续出现第二个同类样本后，再判断哪些动作值得固化。
 
+## 2026-07-15 Bloome 调研补充
+
+本轮对象：[[company.bloome]]。产品判断：[[note.bloome-product-takeaway-2026-07-15]]；过程记录：[[note.bloome-research-run-2026-07-15]]。
+
+回看 Moxt、Floatbot 和 Raft 后，只增加四个当前可复用动作：
+
+- **多阶段 launch**：把邀请制内测、商店上架、官方发布、活动/大使扩散分别记为节点；它们回答的不是同一个问题。
+- **内容权重审计**：平台搜索命中产品链接后必须打开全文，区分 dedicated review、案例植入和文末 CTA，不把整篇互动错误归因给产品。
+- **动态图表自洽校验**：读取 Highcharts 后，用页面 total、最新月 MoM、时间范围和域名再次验证；图表仍在更新时不落数。
+- **官方结构化元数据兜底**：App Store 等页面因地区跳转或动态渲染抓不到时，优先使用平台官方 lookup/API；空壳页面本身不能证明应用不存在。
+
+Bloome 还再次验证了主体边界：共享 founder、员工和开发者账号只说明组织连续性，不能自动迁移另一个产品的融资、团队规模或经营数据。
+
 ## 2026-07-14 Skyfire 调研补充
 
 本轮对象：[[company.skyfire]]。过程记录：[[note.skyfire-research-run-2026-07-14]]；产品判断：[[note.skyfire-product-takeaway-2026-07-14]]。
