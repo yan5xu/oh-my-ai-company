@@ -408,7 +408,7 @@
 
 .omac-paths {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin-top: 60px;
   border-top: 1px solid hsl(var(--border));
   border-bottom: 1px solid hsl(var(--border));
@@ -585,6 +585,14 @@
   vector-effect: non-scaling-stroke;
 }
 
+.omac-ontology svg text {
+  fill: hsl(var(--earth));
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
 .omac-ontology svg marker path {
   fill: hsl(var(--earth) / 0.58);
 }
@@ -667,6 +675,8 @@
 .omac-model-debt li:first-child { padding-top: 0; }
 .omac-model-debt li:last-child { border-bottom: 0; padding-bottom: 0; }
 .omac-model-debt li span { color: hsl(var(--earth)); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; }
+.omac-model-debt > a { display: inline-flex; grid-column: 2; align-items: center; gap: 7px; width: max-content; margin-top: -22px; color: hsl(var(--earth)); font-size: 11px; font-weight: 700; }
+.omac-model-debt > a svg { width: 13px; height: 13px; }
 
 .omac-latest {
   display: grid;
@@ -719,6 +729,10 @@
 .omac-footer > div svg { width: 13px; height: 13px; }
 
 @media (max-width: 1100px) {
+  .omac-paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .omac-path:nth-child(2) { border-right: 0; }
+  .omac-path:nth-child(-n+2) { border-bottom: 1px solid hsl(var(--border)); }
+  .omac-path:nth-child(3) { padding-left: 0; }
   .omac-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .omac-model-layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .omac-model-layer:nth-child(2) { border-right: 0; }
@@ -794,6 +808,7 @@
   .omac-ontology-node:last-child { border-bottom: 0; }
   .omac-ontology-paths { grid-template-columns: 1fr; }
   .omac-model-debt { grid-template-columns: 1fr; gap: 30px; margin-top: 58px; }
+  .omac-model-debt > a { grid-column: 1; margin-top: -12px; }
 
   .omac-graph-band { display: flex; min-height: 0; flex-direction: column; }
   .omac-graph-copy { padding: 72px 20px 48px; }

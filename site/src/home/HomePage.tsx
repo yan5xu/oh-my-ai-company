@@ -48,27 +48,25 @@ const ontologyNodes = [
   { id: "concept", x: 29, y: 80, href: "/concepts" },
   { id: "company", x: 48, y: 48, href: "/companies" },
   { id: "investment", x: 68, y: 27, href: "/investments" },
-  { id: "founder", x: 68, y: 67, href: "/graph?object=company.kernel&graphView=company-founders" },
   { id: "investor", x: 89, y: 18, href: "/investors" },
   { id: "person", x: 89, y: 68, href: "/people" },
   { id: "touchpoint", x: 68, y: 91, href: "/touchpoints" }
 ] as const;
 
 const ontologyEdges = [
-  ["source", "note"],
-  ["source", "company"],
-  ["traffic", "company"],
-  ["method", "note"],
-  ["note", "company"],
-  ["note", "concept"],
-  ["company", "concept"],
-  ["company", "investment"],
-  ["investment", "investor"],
-  ["company", "founder"],
-  ["founder", "person"],
-  ["touchpoint", "company"],
-  ["touchpoint", "investor"],
-  ["touchpoint", "person"]
+  { from: "source", to: "note" },
+  { from: "source", to: "company" },
+  { from: "traffic", to: "company" },
+  { from: "method", to: "note" },
+  { from: "note", to: "company" },
+  { from: "note", to: "concept" },
+  { from: "company", to: "concept" },
+  { from: "company", to: "investment" },
+  { from: "investment", to: "investor" },
+  { from: "company", to: "person", label: "founders" },
+  { from: "touchpoint", to: "company" },
+  { from: "touchpoint", to: "investor" },
+  { from: "touchpoint", to: "person" }
 ] as const;
 
 async function fetchJSON<T>(url: string): Promise<T> {
@@ -337,20 +335,27 @@ export function HomePage({ language, setLanguage, automationRef }: SiteHomeProps
           </div>
           <p className="omac-model-flow">{copy.modelFlow}</p>
           <div className="omac-ontology-heading">
-            <h3>{copy.modelGraphTitle}</h3>
+            <h3 id="omac-ontology-title">{copy.modelGraphTitle}</h3>
             <p>{copy.modelGraphDescription}</p>
           </div>
-          <div className="omac-ontology" role="img" aria-label={copy.modelGraphTitle}>
+          <nav className="omac-ontology" aria-labelledby="omac-ontology-title">
             <svg viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
               <defs>
                 <marker id="omac-ontology-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                   <path d="M 0 0 L 8 4 L 0 8 z" />
                 </marker>
               </defs>
-              {ontologyEdges.map(([fromID, toID]) => {
-                const from = ontologyNodes.find((node) => node.id === fromID)!;
-                const to = ontologyNodes.find((node) => node.id === toID)!;
-                return <line key={`${fromID}-${toID}`} x1={from.x * 10} y1={from.y * 5.2} x2={to.x * 10} y2={to.y * 5.2} />;
+              {ontologyEdges.map((edge) => {
+                const from = ontologyNodes.find((node) => node.id === edge.from)!;
+                const to = ontologyNodes.find((node) => node.id === edge.to)!;
+                const labelX = (from.x + to.x) * 5;
+                const labelY = (from.y + to.y) * 2.6;
+                return (
+                  <g key={`${edge.from}-${edge.to}`}>
+                    <line x1={from.x * 10} y1={from.y * 5.2} x2={to.x * 10} y2={to.y * 5.2} />
+                    {"label" in edge && <text x={labelX} y={labelY - 8}>{edge.label}</text>}
+                  </g>
+                );
               })}
             </svg>
             {ontologyNodes.map((node) => (
@@ -364,7 +369,7 @@ export function HomePage({ language, setLanguage, automationRef }: SiteHomeProps
                 <span>{copy.modelNodes[node.id]}</span>
               </a>
             ))}
-          </div>
+          </nav>
           <div className="omac-ontology-paths">
             {copy.modelPaths.map((path) => <code key={path}>{path}</code>)}
           </div>
@@ -378,6 +383,9 @@ export function HomePage({ language, setLanguage, automationRef }: SiteHomeProps
                 <li key={debt}><span>{String(index + 1).padStart(2, "0")}</span>{debt}</li>
               ))}
             </ol>
+            <a href="https://github.com/yan5xu/oh-my-ai-company#%E6%95%B0%E6%8D%AE%E8%BE%B9%E7%95%8C" target="_blank" rel="noreferrer">
+              {copy.modelDebtAction}<ExternalLink aria-hidden="true" />
+            </a>
           </aside>
         </section>
 

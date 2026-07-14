@@ -6,6 +6,8 @@ Superset 是 YC P26 公司，定位为面向工程师的 agentic IDE / coding ag
 
 Superset 的核心场景是工程师同时驱动多个 coding agents，让它们围绕同一个代码库或任务并行探索方案。产品价值不在单次代码生成，而在“并行 agent 工作流”的管理层：任务分发、运行状态、结果查看、选择合并、回滚和协作。
 
+![Superset 官网展示的多 coding agent 并行工作台](../assets/superset/homepage-product-2026-07-14.png)
+
 这类产品的前提是 coding agent 使用已经足够普遍，用户的问题从“怎么让 AI 写代码”转向“多个 agent 同时工作后，怎么管理它们的产物”。Superset 押注的是这个管理层会变成新的开发者工作台。
 
 ## 团队与网络

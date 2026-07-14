@@ -13,7 +13,7 @@ export const featuredResearch = [
   },
   {
     id: "company.superset",
-    image: "/media/assets/superset/similarweb-similar-sites.png",
+    image: "/media/assets/superset/homepage-product-2026-07-14.png",
     zh: "从 launch、demo 和流量信号，看 coding agent cockpit 如何建立产品叙事与分发。",
     en: "Follow launch, demo, and traffic signals to see how a coding-agent cockpit builds narrative and distribution."
   },
@@ -41,7 +41,7 @@ export const homeCopy = {
     searchHint: "按公司进入，也可以从专题与关系图继续。",
     topicsLabel: "热门专题",
     topics: [
-      ["Browser / Agent Infra", "/companies?filter=category%3Dagent-infra"],
+      ["Agent Infra", "/companies?filter=category%3Dagent-infra"],
       ["企业 Agent / AI Employee", "/companies?filter=category%3Denterprise-agent"],
       ["Agent 支付、治理与执行层", "/companies?filter=tags%3Dagent-payments"]
     ],
@@ -58,7 +58,7 @@ export const homeCopy = {
       {
         number: "01",
         title: "找公司",
-        text: "按 Browser / Agent Infra、企业 Agent、垂直 AI 与开发者工具等主题进入深度卷宗。",
+        text: "按 Agent Infra、企业 Agent、垂直 AI 与开发者工具等主题进入深度卷宗。",
         href: "/companies",
         action: "浏览公司"
       },
@@ -71,10 +71,17 @@ export const homeCopy = {
       },
       {
         number: "03",
-        title: "看增长与判断",
-        text: "追踪流量与 GTM、launch、社区反馈、产品演化，以及可回到证据的研究 takeaway。",
+        title: "看流量与增长信号",
+        text: "比较带时间边界的 traffic.snapshot，辅助理解网站关注度与渠道结构，不把流量等同于用户量。",
         href: "/traffic",
         action: "查看增长信号"
+      },
+      {
+        number: "04",
+        title: "验证证据与判断",
+        text: "从 source.item 回到原始来源、时间和证据等级，再通过 note 区分事实与研究 takeaway。",
+        href: "/sources",
+        action: "查看证据"
       }
     ],
     featuredEyebrow: "精选研究",
@@ -125,25 +132,23 @@ export const homeCopy = {
       concept: "可复用概念",
       investment: "投资事件",
       investor: "投资机构",
-      founder: "创始关系",
       person: "人物",
       method: "研究方法"
     },
     modelPaths: [
       "Source / Traffic → Company ← Investment → Investor",
-      "Company → Founder → Person",
+      "Company — founders → Person",
       "Touchpoint → Company / Person / Investor",
       "Source → Note → Subject；Company + Evidence → Concept；Note → Method"
     ],
     modelDebtTitle: "当前模型仍在演化",
-    modelDebtDescription: "这些边界会诚实保留在产品里，而不是把现有 schema 包装成最终 ontology。",
+    modelDebtDescription: "首页只保留最关键边界，完整的数据边界和维护方式收录在公开仓库。",
     modelDebts: [
       "company 当前同时承载公司与产品；主体增多后会评估 product 或 entity kind。",
-      "investor 混合 VC、战略投资方和 angel，person 与 investor 的角色也可能交叉。",
-      "Anthropic 等主体可能同时以 company 与 investor 身份出现，需要保留双重角色。",
-      "batch 当前主要服务 YC，不代表通用行业分类。",
+      "investor 混合 VC、战略投资方和 angel；person 角色会交叉，同一主体也可能具有双重身份。",
       "字段关系是强关系；Markdown body mentions 是弱关系，图谱中不会同权展示。"
     ],
+    modelDebtAction: "查看完整数据边界",
     latestEyebrow: "最近更新",
     latestTitle: "研究库仍在持续生长。",
     latestDescription: "更新时间表示对象最近一次整理时间，不等于来源事件发生时间。",
@@ -177,7 +182,7 @@ export const homeCopy = {
     searchHint: "Enter through a company, a research theme, or the relationship graph.",
     topicsLabel: "Explore themes",
     topics: [
-      ["Browser / Agent Infra", "/companies?filter=category%3Dagent-infra"],
+      ["Agent Infra", "/companies?filter=category%3Dagent-infra"],
       ["Enterprise Agents / AI Employees", "/companies?filter=category%3Denterprise-agent"],
       ["Agent Payments, Governance & Execution", "/companies?filter=tags%3Dagent-payments"]
     ],
@@ -194,7 +199,7 @@ export const homeCopy = {
       {
         number: "01",
         title: "Find a company",
-        text: "Enter through Browser / Agent Infra, enterprise agents, vertical AI, developer tools, or another research theme.",
+        text: "Enter through Agent Infra, enterprise agents, vertical AI, developer tools, or another research theme.",
         href: "/companies",
         action: "Browse companies"
       },
@@ -207,10 +212,17 @@ export const homeCopy = {
       },
       {
         number: "03",
-        title: "Track growth and judgments",
-        text: "Follow traffic and GTM, launches, community feedback, product evolution, and research takeaways backed by evidence.",
+        title: "Inspect traffic and growth signals",
+        text: "Compare time-bounded traffic snapshots to understand attention and channel structure without treating visits as users.",
         href: "/traffic",
         action: "View growth signals"
+      },
+      {
+        number: "04",
+        title: "Verify evidence and judgments",
+        text: "Return to source URLs, dates, and evidence levels, then use Notes to distinguish facts from research takeaways.",
+        href: "/sources",
+        action: "Browse evidence"
       }
     ],
     featuredEyebrow: "Featured research",
@@ -261,25 +273,23 @@ export const homeCopy = {
       concept: "Reusable concept",
       investment: "Investment event",
       investor: "Investor",
-      founder: "Founder relation",
       person: "Person",
       method: "Research method"
     },
     modelPaths: [
       "Source / Traffic → Company ← Investment → Investor",
-      "Company → Founder → Person",
+      "Company — founders → Person",
       "Touchpoint → Company / Person / Investor",
       "Source → Note → Subject; Company + Evidence → Concept; Note → Method"
     ],
     modelDebtTitle: "The model is still evolving",
-    modelDebtDescription: "These boundaries remain explicit instead of presenting the current schema as a final ontology.",
+    modelDebtDescription: "The homepage keeps only the most important boundaries; the public repository documents the full data boundary and maintenance model.",
     modelDebts: [
       "company currently represents both companies and products; product or entity kind may become necessary as the vault grows.",
-      "investor mixes VCs, strategic investors, and angels, while person and investor roles can overlap.",
-      "Subjects such as Anthropic may appear as both company and investor, requiring dual roles.",
-      "batch primarily serves YC today and is not a universal market taxonomy.",
+      "investor mixes VCs, strategic investors, and angels; person roles overlap, and one subject may carry multiple identities.",
       "Field links are strong relationships; Markdown body mentions are weak and are not rendered with equal weight."
     ],
+    modelDebtAction: "Read the full data boundary",
     latestEyebrow: "Recently updated",
     latestTitle: "The research vault keeps growing.",
     latestDescription: "Updated time means the object was revised; it is not the date of the underlying event.",
