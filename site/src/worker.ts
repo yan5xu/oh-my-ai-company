@@ -105,7 +105,7 @@ async function metadata(env: Env) {
   const meta = Object.fromEntries((values.results || []).map((row) => [row.key, row.value]));
   return {
     name: "Oh My AI Company",
-    description: "A curated atlas of AI companies, founders, investors, evidence, and market signals.",
+    description: "A complete public Memex vault of AI companies, founders, investors, evidence, and market signals.",
     generated_at: meta.generated_at || null,
     object_count: Number(meta.object_count || 0),
     link_count: Number(meta.link_count || 0),
@@ -594,7 +594,7 @@ async function api(request: Request, env: Env) {
       brand_mark: "OM",
       brand_tagline: "AI company research atlas",
       source_url: "https://github.com/yan5xu/oh-my-ai-company",
-      status_label: "Public · Read-only"
+      status_label: "Public · Full vault · Read-only"
     });
   }
   if (url.pathname === "/api/run" && request.method === "POST") return handleRun(request, env);

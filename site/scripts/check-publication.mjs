@@ -1,8 +1,10 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync, rmSync } from "node:fs";
+import { existsSync, readFileSync, rmSync } from "node:fs";
 import { resolve } from "node:path";
 
 const db = resolve("generated/publication-check.db");
+const sourceDB = resolve("../.memex/memex.db");
+const vault = resolve("..");
 const manifest = JSON.parse(readFileSync(resolve("publish.manifest.json"), "utf8"));
 const assets = JSON.parse(readFileSync(resolve("generated/public-assets.json"), "utf8"));
 const sql = [
@@ -12,56 +14,87 @@ const sql = [
 ].join("\n");
 
 rmSync(db, { force: true });
-execFileSync("sqlite3", [db], { input: sql, stdio: ["pipe", "pipe", "inherit"] });
+execFileSync("sqlite3", [db], { input: sql, stdio: ["pipe", "pipe", "inherit"], maxBuffer: 128 * 1024 * 1024 });
 
-function scalar(statement) {
-  return String(execFileSync("sqlite3", [db, statement], { encoding: "utf8" })).trim();
+function scalar(target, statement) {
+  return String(execFileSync("sqlite3", [target, statement], { encoding: "utf8" })).trim();
+}
+function rows(target, statement) {
+  const raw = execFileSync("sqlite3", ["-json", target, statement], { encoding: "utf8", maxBuffer: 128 * 1024 * 1024 });
+  return raw.trim() ? JSON.parse(raw) : [];
 }
 function assert(condition, message) {
   if (!condition) throw new Error(`publication check failed: ${message}`);
 }
 
-assert(Number(scalar("SELECT COUNT(*) FROM objects WHERE type_id='company'")) === manifest.companies.length, "company count does not match manifest");
-assert(Number(scalar("SELECT COUNT(*) FROM objects WHERE type_id IN ('note','method','batch')")) === 0, "internal types are present");
-assert(Number(scalar("SELECT COUNT(*) FROM links WHERE kind <> 'field'")) === 0, "weak links are present");
-assert(Number(scalar(`SELECT COUNT(*) FROM objects WHERE type_id='source.item' AND (
-  json_extract(fields_json,'$.quality') NOT IN ('full','partial') OR
-  json_extract(fields_json,'$.evidence_level') NOT IN ('S1','S2','S3') OR
-  json_extract(fields_json,'$.processing_status') NOT IN ('summarized','linked')
-)`)) === 0, "source policy is violated");
-assert(Number(scalar("SELECT COUNT(*) FROM objects WHERE id IN ('company.test-co','note.browserbase-research-run-2026-07-11')")) === 0, "known internal/test objects are present");
-assert(Number(scalar("SELECT COUNT(*) FROM objects WHERE body LIKE '%/Users/%' OR body LIKE '%/tmp/%' OR body LIKE '%pinix_session=%'")) === 0, "sensitive paths or session data are present");
-assert(Number(scalar("SELECT COUNT(*) FROM public_assets")) === assets.length, "asset projection count does not match manifest output");
-assert(assets.every((asset) => manifest.asset_allowlist.includes(asset.path)), "an asset is not explicitly allowlisted");
+assert(manifest.mode === "full-vault", "publication mode is not full-vault");
 
-const objects = JSON.parse(execFileSync("sqlite3", ["-json", db, "SELECT id,body FROM objects WHERE body <> ''"], { encoding: "utf8" }) || "[]");
-const publicIDs = new Set(JSON.parse(execFileSync("sqlite3", ["-json", db, "SELECT id FROM objects"], { encoding: "utf8" }) || "[]").map((row) => row.id));
-for (const object of objects) {
+const sourceCounts = {
+  types: Number(scalar(sourceDB, "SELECT COUNT(*) FROM types")),
+  fields: Number(scalar(sourceDB, "SELECT COUNT(*) FROM fields")),
+  objects: Number(scalar(sourceDB, "SELECT COUNT(*) FROM objects")),
+  links: Number(scalar(sourceDB, "SELECT COUNT(*) FROM links WHERE resolved=1")),
+  companies: Number(scalar(sourceDB, "SELECT COUNT(*) FROM objects WHERE type_id='company'"))
+};
+const publishedCounts = {
+  types: Number(scalar(db, "SELECT COUNT(*) FROM types")),
+  objects: Number(scalar(db, "SELECT COUNT(*) FROM objects")),
+  links: Number(scalar(db, "SELECT COUNT(*) FROM links")),
+  companies: Number(scalar(db, "SELECT COUNT(*) FROM objects WHERE type_id='company'"))
+};
+
+assert(publishedCounts.types === sourceCounts.types, "type count differs from source vault");
+assert(publishedCounts.objects === sourceCounts.objects, "object count differs from source vault");
+assert(publishedCounts.links === sourceCounts.links, "resolved link count differs from source vault");
+assert(publishedCounts.companies === sourceCounts.companies, "company count differs from source vault");
+assert(Number(scalar(db, "SELECT COUNT(*) FROM object_search")) === sourceCounts.objects, "search index is incomplete");
+assert(Number(scalar(db, "SELECT COUNT(*) FROM public_assets")) === assets.length, "asset projection count differs from generated manifest");
+
+const sourceObjects = rows(sourceDB, "SELECT id,body_path FROM objects ORDER BY id");
+const publishedObjects = rows(db, "SELECT id,body,fields_json FROM objects ORDER BY id");
+const publishedByID = new Map(publishedObjects.map((object) => [object.id, object]));
+const publicIDs = new Set(publishedObjects.map((object) => object.id));
+
+for (const object of sourceObjects) {
+  const published = publishedByID.get(object.id);
+  assert(published, `missing object ${object.id}`);
+  const expectedBody = object.body_path ? readFileSync(resolve(vault, object.body_path), "utf8") : "";
+  assert(published.body === expectedBody, `${object.id} body differs from source Markdown`);
+}
+
+for (const object of publishedObjects) {
+  const content = `${object.body}\n${object.fields_json}`.toLowerCase();
+  for (const pattern of manifest.sensitive_patterns || []) {
+    assert(!content.includes(String(pattern).toLowerCase()), `${object.id} contains sensitive pattern ${JSON.stringify(pattern)}`);
+  }
   for (const match of object.body.matchAll(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g)) {
-    assert(publicIDs.has(match[1]), `${object.id} links to non-public object ${match[1]}`);
+    assert(publicIDs.has(match[1]), `${object.id} links to missing object ${match[1]}`);
   }
 }
 
-const publicTypes = new Set(Object.keys(manifest.field_allowlist));
-const typeDefinitions = JSON.parse(scalar("SELECT value FROM metadata WHERE key='type_definitions'"));
-for (const type of typeDefinitions) {
-  assert(publicTypes.has(type.id), `private type definition ${type.id} is present`);
-  for (const field of type.fields || []) {
-    assert((manifest.field_allowlist[type.id] || []).includes(field.name), `private field ${type.id}.${field.name} is present`);
-    assert(!field.target_type || publicTypes.has(field.target_type), `field ${type.id}.${field.name} targets private type ${field.target_type}`);
-  }
+for (const asset of assets) {
+  assert(existsSync(resolve(vault, asset.path)), `referenced asset is missing: ${asset.path}`);
+  assert(publicIDs.has(asset.object_id), `asset owner is missing: ${asset.path}`);
 }
 
-const graphViews = JSON.parse(scalar("SELECT value FROM metadata WHERE key='graph_views'"));
+const typeDefinitions = JSON.parse(scalar(db, "SELECT value FROM metadata WHERE key='type_definitions'"));
+assert(typeDefinitions.length === sourceCounts.types, "type definitions are incomplete");
+assert(typeDefinitions.reduce((count, type) => count + (type.fields || []).length, 0) === sourceCounts.fields, "field definitions are incomplete");
+
+const publicTypes = new Set(typeDefinitions.map((type) => type.id));
+const graphViews = JSON.parse(scalar(db, "SELECT value FROM metadata WHERE key='graph_views'"));
 for (const view of graphViews.views || []) {
-  assert(publicTypes.has(view.root_type), `graph view ${view.id} has private root type ${view.root_type}`);
-  assert(!/(笔记|方法)/.test(view.description || ""), `graph view ${view.id} describes unpublished data`);
+  assert(publicTypes.has(view.root_type), `graph view ${view.id} has missing root type ${view.root_type}`);
   for (const path of view.paths || []) {
-    for (const step of path.steps || []) assert(publicTypes.has(step.target_type), `graph view ${view.id} targets private type ${step.target_type}`);
+    for (const step of path.steps || []) assert(publicTypes.has(step.target_type), `graph view ${view.id} targets missing type ${step.target_type}`);
   }
-  for (const type of Object.keys(view.nodes || {})) assert(publicTypes.has(type), `graph view ${view.id} renders private node type ${type}`);
-  for (const type of Object.keys(view.bridges || {})) assert(publicTypes.has(type), `graph view ${view.id} folds private bridge type ${type}`);
+  for (const type of Object.keys(view.nodes || {})) assert(publicTypes.has(type), `graph view ${view.id} renders missing type ${type}`);
+  for (const type of Object.keys(view.bridges || {})) assert(publicTypes.has(type), `graph view ${view.id} folds missing type ${type}`);
 }
+
+assert(scalar(db, "SELECT value FROM metadata WHERE key='publication_mode'") === "full-vault", "publication metadata mode is wrong");
+assert(Number(scalar(db, "SELECT value FROM metadata WHERE key='object_count'")) === sourceCounts.objects, "object metadata count is wrong");
+assert(Number(scalar(db, "SELECT value FROM metadata WHERE key='link_count'")) === sourceCounts.links, "link metadata count is wrong");
 
 rmSync(db, { force: true });
-console.log(`Publication check passed: ${manifest.companies.length} companies, ${assets.length} assets`);
+console.log(`Publication check passed: full vault with ${sourceCounts.types} types, ${sourceCounts.objects} objects, ${sourceCounts.links} links, and ${assets.length} assets`);

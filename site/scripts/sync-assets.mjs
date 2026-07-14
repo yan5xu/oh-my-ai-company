@@ -73,4 +73,4 @@ async function worker() {
 }
 
 await Promise.all(Array.from({ length: Math.min(concurrency, operations.length) }, worker));
-console.log(`Published ${allowed.size} assets and removed ${operations.length - allowed.size} non-public local assets from ${bucket}`);
+console.log(`Published ${allowed.size} referenced assets and removed ${operations.length - allowed.size} unreferenced assets from ${bucket}`);
