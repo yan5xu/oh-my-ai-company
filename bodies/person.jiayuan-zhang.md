@@ -1,4 +1,3 @@
-# Jiayuan Zhang
 # Jiayuan (JY) Zhang / 张佳圆
 
 Multica 联合创始人兼 CEO，公开账号为 [@jiayuan_jy](https://x.com/jiayuan_jy)。曾在 TikTok 工作，后创办 Devv.AI，再从团队内部多 Agent 协作问题发展出 [[company.multica]]。

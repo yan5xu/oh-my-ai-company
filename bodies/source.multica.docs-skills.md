@@ -1,5 +1,4 @@
 # Multica Skills 文档
-# Multica Skills 文档
 
 **证据等级：S1，官方文档。**
 

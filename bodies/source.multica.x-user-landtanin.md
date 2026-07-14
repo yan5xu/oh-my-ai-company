@@ -1,5 +1,4 @@
 # Land Tanin 三日 Multica 实测
-# Land Tanin 三日 Multica 实测
 
 **证据等级：S3，公开用户 thread。**
 

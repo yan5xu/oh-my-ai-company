@@ -1,5 +1,4 @@
 # Lin Yushen
-# Lin Yushen
 
 GitHub 账号 `ldnvnbl`，公开 profile company 标注 Devv，位于上海，是 [[company.multica]] 仓库的主要贡献者之一。
 

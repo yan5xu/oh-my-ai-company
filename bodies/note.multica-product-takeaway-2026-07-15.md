@@ -1,5 +1,4 @@
 # Multica 产品判断与 CP takeaway
-# Multica 产品判断与 CP takeaway
 
 ## 一句话
 

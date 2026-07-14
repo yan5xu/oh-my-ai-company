@@ -1,5 +1,4 @@
 # Multica
-# Multica
 
 ![Multica 官网首屏 {wide}](../assets/multica/landing-hero.png)
 

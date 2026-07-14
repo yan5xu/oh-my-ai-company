@@ -1,5 +1,4 @@
 # Naiyuan Qing
-# Naiyuan Qing
 
 公开 LinkedIn 头衔为 Multica Design Engineer，GitHub 账号 `NevilleQingNY` 是 [[company.multica]] 的主要贡献者之一。教育背景公开为 Dublin City University。
 

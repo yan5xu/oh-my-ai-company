@@ -1,5 +1,4 @@
 # Bohan Jiang
-# Bohan Jiang
 
 [[company.multica]] 联合创始人，多伦多大学背景。此前参与 Devv.AI，并在 2025 年公开团队从开发者 AI 搜索转向 AI App Builder 的产品 pivot。[[source.multica.linkedin-bohan]] [[source.multica.linkedin-devv-pivot]]
 

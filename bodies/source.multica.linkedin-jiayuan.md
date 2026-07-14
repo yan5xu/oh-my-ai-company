@@ -1,5 +1,4 @@
 # Jiayuan Zhang LinkedIn
-# Jiayuan Zhang LinkedIn
 
 **证据等级：S1，自报职业档案；处理质量 partial。**
 

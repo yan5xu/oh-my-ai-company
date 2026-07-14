@@ -1,4 +1,3 @@
-# 对 Multica 和 Paperclip 作为 Agent-first 软件必要性的质疑
 # 对 Agent-first 管理软件必要性的反方质疑
 
 **证据等级：S3，社区观点。**

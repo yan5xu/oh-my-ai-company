@@ -1,5 +1,4 @@
 # Multica 修改版 Apache 2.0 许可
-# Multica 修改版 Apache 2.0 许可
 
 **证据等级：S1，LICENSE 原文。**
 

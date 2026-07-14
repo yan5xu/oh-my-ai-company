@@ -1,5 +1,4 @@
 # Devv 2025 AI App Builder pivot launch
-# Devv 2025 AI App Builder pivot launch
 
 **证据等级：S1，创始人原始 LinkedIn 发布。**
 

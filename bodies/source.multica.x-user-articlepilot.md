@@ -1,4 +1,3 @@
-# Article Pilot 创作者的 Multica 使用反馈
 # Article Pilot 创作者的 Multica 体验
 
 **证据等级：S3，公开用户发布。**

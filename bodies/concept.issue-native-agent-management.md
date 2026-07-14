@@ -1,5 +1,4 @@
 # Issue-native Agent 管理
-# Issue-native Agent 管理
 
 以 Issue 作为 Agent 的工作合同，而不是把聊天 session 当主要控制面。任务被分配后，执行桥梁创建隔离环境、调用 Agent runtime、持续回写状态，并允许相同 Agent 在同一 Issue 中恢复会话。
 

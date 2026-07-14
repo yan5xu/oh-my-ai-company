@@ -1,5 +1,4 @@
 # Bohan Jiang X
-# Bohan Jiang X
 
 历史账号：[@Bohan_active](https://x.com/Bohan_active)。
 

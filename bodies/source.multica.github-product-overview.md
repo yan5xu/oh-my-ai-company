@@ -1,5 +1,4 @@
 # Multica 产品与代码结构概览
-# Multica 产品与代码结构概览
 
 **证据等级：S1，官方 README、docs 与代码。**
 

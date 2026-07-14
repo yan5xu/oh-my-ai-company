@@ -1,5 +1,4 @@
 # About Multica
-# About Multica
 
 **证据等级：S1，官方。**
 

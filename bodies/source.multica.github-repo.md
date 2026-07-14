@@ -1,5 +1,4 @@
 # multica-ai/multica GitHub 仓库
-# multica-ai/multica GitHub 仓库
 
 **证据等级：S1，官方仓库与 GitHub API。采集于 2026-07-15。**
 
