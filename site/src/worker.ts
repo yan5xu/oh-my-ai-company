@@ -272,15 +272,20 @@ async function graph(request: Request, env: Env) {
   }
 
   const ids = [...seen];
-  const placeholders = ids.map(() => "?").join(",");
-  const rows = await env.DB.prepare(`
-    SELECT id, type_id, title, fields_json, created_at, updated_at
-    FROM objects WHERE id IN (${placeholders})
-  `).bind(...ids).all<ObjectRow>();
+  const nodeRows: ObjectRow[] = [];
+  for (let start = 0; start < ids.length; start += 80) {
+    const batch = ids.slice(start, start + 80);
+    const placeholders = batch.map(() => "?").join(",");
+    const rows = await env.DB.prepare(`
+      SELECT id, type_id, title, fields_json, created_at, updated_at
+      FROM objects WHERE id IN (${placeholders})
+    `).bind(...batch).all<ObjectRow>();
+    nodeRows.push(...(rows.results || []));
+  }
 
   return {
     center,
-    nodes: (rows.results || []).map(parseFields),
+    nodes: nodeRows.map(parseFields),
     edges: [...edgeMap.values()]
   };
 }
