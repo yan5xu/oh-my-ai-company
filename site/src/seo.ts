@@ -146,7 +146,7 @@ function metaDescription(value: string, lang: string) {
   const concise = value.trim().replace(/\s+/g, " ");
   const cjk = looksLikeCJKText(concise) || (!concise && lang.startsWith("zh"));
   const minimumLength = cjk ? 30 : 110;
-  const maximumLength = cjk ? 90 : 155;
+  const maximumLength = 155;
   const fallback = cjk
     ? "在本研究图谱中查看关联主体、证据与市场信号。"
     : "Explore related evidence and market context in OMAC.";

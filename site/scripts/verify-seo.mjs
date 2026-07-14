@@ -50,6 +50,14 @@ assert(companyObjectResponse.response.status === 200, `company API: expected 200
 const companyObject = JSON.parse(companyObjectResponse.body).object;
 assert(companyDescription === companyObject.fields.one_liner, "company: Chinese meta description should preserve one_liner without a generic English suffix");
 
+const lindy = await read("/companies/lindy");
+assert(lindy.response.status === 200, `lindy: expected 200, got ${lindy.response.status}`);
+const lindyDescription = metaContent(lindy.body, "description");
+const lindyObjectResponse = await read("/api/objects/company.lindy");
+assert(lindyObjectResponse.response.status === 200, `lindy API: expected 200, got ${lindyObjectResponse.response.status}`);
+const lindyObject = JSON.parse(lindyObjectResponse.body).object;
+assert(lindyDescription === lindyObject.fields.one_liner, "lindy: long Chinese one_liner should remain intact");
+
 const investor = await read("/investors/accel");
 assert(investor.response.status === 200, `investor: expected 200, got ${investor.response.status}`);
 includesAll(investor.body, ["<title>Accel — AI investor profile | OMAC</title>", "Connected research"], "investor");
