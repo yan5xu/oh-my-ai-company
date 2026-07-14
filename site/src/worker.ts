@@ -166,11 +166,22 @@ async function listObjects(request: Request, env: Env) {
   const offset = integer(url.searchParams.get("offset"), 0, 0, 100000);
   const conditions = ["o.type_id = ?"];
   const values: unknown[] = [type];
+  const orderValues: unknown[] = [];
+  let relevanceOrder = "";
 
   if (q) {
     conditions.push("(o.title LIKE ? OR o.id LIKE ? OR o.fields_json LIKE ?)");
     const pattern = `%${q}%`;
     values.push(pattern, pattern, pattern);
+    relevanceOrder = `
+      CASE
+        WHEN o.title = ? COLLATE NOCASE THEN 0
+        WHEN o.title LIKE ? COLLATE NOCASE THEN 1
+        WHEN o.id LIKE ? COLLATE NOCASE THEN 2
+        WHEN o.title LIKE ? COLLATE NOCASE THEN 3
+        ELSE 4
+      END,`;
+    orderValues.push(q, `${q}%`, `%.${q}%`, pattern);
   }
 
   const where = conditions.join(" AND ");
@@ -179,9 +190,9 @@ async function listObjects(request: Request, env: Env) {
       SELECT o.id, o.type_id, o.title, o.body_path, o.fields_json, o.created_at, o.updated_at
       FROM objects o
       WHERE ${where}
-      ORDER BY o.title COLLATE NOCASE, o.id
+      ORDER BY ${relevanceOrder} o.title COLLATE NOCASE, o.id
       LIMIT ? OFFSET ?
-    `).bind(...values, limit, offset).all<ObjectRow>(),
+    `).bind(...values, ...orderValues, limit, offset).all<ObjectRow>(),
     env.DB.prepare(`SELECT COUNT(*) AS count FROM objects o WHERE ${where}`)
       .bind(...values).first<{ count: number }>()
   ]);

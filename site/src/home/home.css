@@ -784,7 +784,19 @@
   .omac-hero-description { font-size: 14px; line-height: 1.68; }
   .omac-search { grid-template-columns: 20px minmax(0, 1fr); min-height: 58px; padding: 5px 13px; }
   .omac-search button { grid-column: 1 / -1; width: 100%; margin-top: 5px; }
-  .omac-search-results { top: calc(100% + 8px); }
+  .omac-search-results {
+    position: static;
+    grid-column: 1 / -1;
+    width: auto;
+    max-height: min(42svh, 280px);
+    margin: 7px -13px -5px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-width: 1px 0 0;
+    border-radius: 0 0 6px 6px;
+    box-shadow: none;
+    -webkit-overflow-scrolling: touch;
+  }
   .omac-search-results a { grid-template-columns: 1fr; gap: 3px; }
   .omac-search-hint { display: none; }
   .omac-topic-links { align-items: flex-start; flex-direction: column; gap: 6px; margin-top: 16px; }
