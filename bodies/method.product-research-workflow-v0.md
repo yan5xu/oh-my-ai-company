@@ -206,6 +206,19 @@ Hyperagent 的修正见 [[note.hyperagent-product-takeaway-2026-07-10]]。
 
 本轮还验证了：支付产品的真正壁垒可能从 rail 转向 identity、access 和 policy enforcement，但是否形成独立品类仍需更多样本。
 
+## 2026-07-14 Clink 调研补充
+
+本轮对象：[[company.clink]]。过程记录：[[note.clink-research-run-2026-07-14]]；产品判断：[[note.clink-product-takeaway-2026-07-14]]。
+
+这轮针对支付、MoR、Billing 与 Agent commerce 产品补出四项检查：
+
+- **Operating contract audit**：不能只读首页和 API。Terms、Fee Schedule、payout、Reserve、chargeback、退款、税务与 liability 才能说明支付公司实际承担什么、把什么留给商户。
+- **Root vs subdomain traffic audit**：marketing root、docs、dashboard、checkout 与 API 子域分别承载不同信号。遇到总量和参与度冲突，先检查 includeSubdomains，再判断数据质量。
+- **Public-access smoke**：对“open beta”“public access”“self-serve”必须实际点击 CTA，记录是生产还是 UAT、是否邀请码、是否 KYC、能否生成 key；不可只复述新闻稿。
+- **Referral semantics**：支付/infra 产品的外链可能是媒体阅读，也可能是 merchant checkout、支付跳转和 return URL。结合双向 domain、outbound destination 和产品节点判断，但不得直接换算成客户、订单或 GMV。
+
+本轮还形成候选概念 [[concept.merchant-agent-readiness]]：Agent commerce 不只需要买方 wallet，也需要商户的 discovery、Skill、usage billing、authorization、fulfillment 与 audit 闭环。
+
 ## 2026-07-13 Hyperbrowser 调研补充
 
 本轮对象：[[company.hyperbrowser]]。相关记录：[[note.hyperbrowser-product-takeaway-2026-07-13]]、[[note.hyperbrowser-research-run-2026-07-13]]。
