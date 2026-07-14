@@ -69,6 +69,11 @@ const robots = await read("/robots.txt");
 assert(robots.response.status === 200, `robots: expected 200, got ${robots.response.status}`);
 includesAll(robots.body, ["Disallow: /api/", "Sitemap: https://companies.yan5xu.ai/sitemap.xml"], "robots");
 
+const indexNowKey = await read("/395a13fe1103f644f6ad99fd1623fe09.txt");
+assert(indexNowKey.response.status === 200, `IndexNow key: expected 200, got ${indexNowKey.response.status}`);
+assert(indexNowKey.body.trim() === "395a13fe1103f644f6ad99fd1623fe09", "IndexNow key: unexpected body");
+assert(indexNowKey.response.headers.get("x-robots-tag") === "noindex, nofollow", "IndexNow key: expected noindex header");
+
 const redirect = await fetch(new URL("/?view=detail&type=company&object=company.kernel", base), { redirect: "manual" });
 assert(redirect.status === 301, `legacy redirect: expected 301, got ${redirect.status}`);
 assert(redirect.headers.get("location") === new URL("/companies/kernel", base).toString(), `legacy redirect: unexpected location ${redirect.headers.get("location")}`);

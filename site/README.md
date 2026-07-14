@@ -165,6 +165,15 @@ npm run publish
 
 `data:sync` replaces the complete read-only projection. The local Memex Vault remains authoritative; update `publish.manifest.json` only when publication-wide safety rules change.
 
+The export also generates `generated/indexnow-manifest.json`. Each entry fingerprints the rendered body, structured fields, timestamps, and strong relations for one canonical page. After a successful publish, `indexnow:submit` compares that manifest with the previous per-URL state stored in D1 and notifies IndexNow only about added, changed, or removed URLs. Preview the pending notification without writing remote state:
+
+```bash
+npm run publication:check
+npm run indexnow:dry-run
+```
+
+The IndexNow ownership key is served from the site root and intentionally carries `X-Robots-Tag: noindex, nofollow`. Keep `site.indexnow_key` stable; rotating it requires deploying the new key route before submitting URLs.
+
 ## Read-only API
 
 ```text

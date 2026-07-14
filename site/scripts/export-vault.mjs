@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, extname, relative, resolve, sep } from "node:path";
 import { marked } from "marked";
@@ -233,6 +234,79 @@ function isSEOIndexable(object) {
 const seoIndexableObjects = objects.filter(isSEOIndexable);
 const seoIndexableCount = seoIndexableObjects.length;
 
+function digest(value) {
+  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function absolutePublicURL(path) {
+  return new URL(path, `${seoConfig.site.base_url}/`).toString();
+}
+
+const relationsByObject = new Map(objects.map((object) => [object.id, []]));
+for (const link of links) {
+  const relation = {
+    from: link.from_object_id,
+    to: link.to_object_id,
+    kind: link.kind,
+    relation: link.relation,
+    from_title: objectByID.get(link.from_object_id)?.title || "",
+    to_title: objectByID.get(link.to_object_id)?.title || ""
+  };
+  relationsByObject.get(link.from_object_id)?.push(relation);
+  relationsByObject.get(link.to_object_id)?.push(relation);
+}
+
+const objectFingerprints = new Map(seoIndexableObjects.map((object) => [
+  object.id,
+  digest({
+    seo_config_version: seoConfig.version,
+    id: object.id,
+    type_id: object.type_id,
+    title: object.title,
+    body: bodiesByID.get(object.id),
+    body_html: bodyHTMLByID.get(object.id),
+    fields: fieldsByID.get(object.id),
+    created_at: object.created_at,
+    updated_at: object.updated_at,
+    relations: (relationsByObject.get(object.id) || []).sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))
+  })
+]));
+
+const objectIndexNowEntries = seoIndexableObjects.map((object) => ({
+  url: absolutePublicURL(publicObjectPath(object)),
+  fingerprint: objectFingerprints.get(object.id),
+  type: object.type_id,
+  object_id: object.id
+}));
+const pageIndexNowEntries = [
+  {
+    url: absolutePublicURL("/"),
+    fingerprint: digest({
+      seo_config_version: seoConfig.version,
+      objects: objectIndexNowEntries.map((entry) => [entry.url, entry.fingerprint])
+    }),
+    type: "page"
+  },
+  ...seoConfig.indexing.collection_types.flatMap((type) => {
+    const route = seoConfig.routes[type];
+    if (!route) return [];
+    return [{
+      url: absolutePublicURL(`/${route.collection}`),
+      fingerprint: digest({
+        seo_config_version: seoConfig.version,
+        type,
+        objects: objectIndexNowEntries.filter((entry) => entry.type === type).map((entry) => [entry.url, entry.fingerprint])
+      }),
+      type: "collection"
+    }];
+  })
+];
+const indexNowManifest = {
+  version: 1,
+  generated_at: new Date().toISOString(),
+  entries: [...pageIndexNowEntries, ...objectIndexNowEntries].sort((a, b) => a.url.localeCompare(b.url))
+};
+
 const lines = [
   "-- Generated from the complete Memex vault. Do not edit.",
   "DELETE FROM public_assets;",
@@ -282,6 +356,7 @@ const report = {
     links: links.length,
     assets: publicAssets.length,
     seo_indexable: seoIndexableCount,
+    indexnow_urls: indexNowManifest.entries.length,
     seo_indexable_by_type: Object.fromEntries(types.map((type) => [type.id, seoIndexableObjects.filter((object) => object.type_id === type.id).length])),
     by_type: Object.fromEntries(types.map((type) => [type.id, objects.filter((object) => object.type_id === type.id).length]))
   }
@@ -291,4 +366,5 @@ mkdirSync(dirname(output), { recursive: true });
 writeFileSync(output, `${lines.join("\n")}\n`);
 writeFileSync(resolve(dirname(output), "public-assets.json"), `${JSON.stringify(publicAssets, null, 2)}\n`);
 writeFileSync(resolve(dirname(output), "publication-report.json"), `${JSON.stringify(report, null, 2)}\n`);
+writeFileSync(resolve(dirname(output), "indexnow-manifest.json"), `${JSON.stringify(indexNowManifest, null, 2)}\n`);
 console.log(`Published full vault: ${types.length} types, ${objects.length} objects, ${links.length} links, and ${publicAssets.length} referenced assets`);

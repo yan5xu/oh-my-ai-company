@@ -16,8 +16,10 @@
     "seo:verify": "node scripts/verify-seo.mjs",
     "data:sync": "npm run publication:check && wrangler d1 execute oh-my-ai-company-prod --remote --file generated/vault.sql",
     "assets:sync": "node scripts/sync-assets.mjs ..",
+    "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "deploy": "npm run build && wrangler deploy",
-    "publish": "npm run db:migrate && npm run data:sync && npm run deploy && npm run assets:sync"
+    "publish": "npm run db:migrate && npm run data:sync && npm run deploy && npm run assets:sync && npm run indexnow:submit"
   },
   "dependencies": {
     "marked": "^16.4.2",

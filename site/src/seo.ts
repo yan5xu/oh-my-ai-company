@@ -32,6 +32,7 @@ type SEOConfig = {
     default_image: string;
     github_url: string;
     google_site_verification?: string;
+    indexnow_key?: string;
   };
   routes: Record<string, RouteConfig>;
   indexing: {

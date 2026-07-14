@@ -717,6 +717,19 @@ function serveRobots(request: Request) {
   });
 }
 
+function serveIndexNowKey(request: Request) {
+  const key = seoConfig.site.indexnow_key;
+  if (!key) return null;
+  return new Response(request.method === "HEAD" ? null : key, {
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=3600, s-maxage=86400",
+      "x-content-type-options": "nosniff",
+      "x-robots-tag": "noindex, nofollow"
+    }
+  });
+}
+
 async function legacyPublicRedirect(url: URL, env: Env) {
   if (url.pathname !== "/") return null;
   const view = url.searchParams.get("view");
@@ -922,6 +935,10 @@ export default {
     try {
       if (url.pathname.startsWith("/api/")) return await api(request, env);
       if (url.pathname.startsWith("/media/")) return await serveMedia(request, env);
+      if (seoConfig.site.indexnow_key && url.pathname === `/${seoConfig.site.indexnow_key}.txt`) {
+        const response = serveIndexNowKey(request);
+        if (response) return response;
+      }
       if (url.pathname === "/robots.txt") return serveRobots(request);
       if (url.pathname === "/sitemap.xml" || url.pathname.startsWith("/sitemaps/")) {
         const sitemap = await serveSitemap(request, env);
