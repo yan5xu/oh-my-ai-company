@@ -1,0 +1,1 @@
+集成供应商 Merge 的客户案例。Merge 称 Ema 通过其 unified API 在数周内加入 200+ integrations，节省工程时间。可证明连接器扩张路径，但属于供应商互证，不能单独证明最终客户采用。

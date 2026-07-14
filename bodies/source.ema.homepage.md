@@ -1,0 +1,1 @@
+官方首页。当前定位为 One employee, Infinite roles；列出 Employee Experience、Customer Experience、Finance Operations，以及预置 AI Employee 角色。官网 claim 需要与客户证据分开。

@@ -1,0 +1,1 @@
+Ingrid Lunden 于 2024-03-05 报道。Ema 当日结束隐身，累计融资 2500 万美元；早期客户包括 Envoy Global、TrueLayer、Moneyview。Accel、Section 32、Prosus 共同领投早期融资，Wipro Ventures、Venture Highway、AME Cloud、Frontier Ventures、Maum Group、Firebolt 等参与。

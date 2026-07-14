@@ -1,0 +1,1 @@
+Wipro Ventures 官方页面把 Ema 列为 portfolio company，并定位为 Agentic AI for Seamless Employee Support。该页能确认战略投资关系，但不是 Ema 客户效果案例。

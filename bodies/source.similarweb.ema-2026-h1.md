@@ -1,0 +1,1 @@
+第三方估算，全球、Total、含 subdomains，2026-01 至 2026-06。页面总览显示 monthly visits 28,972、unique visitors 13,497、duration 3:32、pages/visit 1.87、bounce 61%；渠道为 Direct 46.32%、Organic Search 39.22%、Referral 6.66%、Organic Social 5.25%、GenAI 2.54%；India 67.73%、US 17.08%。月线原始点为 0、0、12,271、54,124、32,618、16,875，Jan/Feb 0 更可能是数据缺失；月线总和与页面 total visits 214,611 不一致，因此只作方向判断。

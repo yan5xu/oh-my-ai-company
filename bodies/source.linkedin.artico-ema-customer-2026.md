@@ -1,0 +1,1 @@
+Artico Search CEO Mercedes Chatfield-Taylor 公开表示双方合作 2+ 年，已从 sandbox experimentation 进入 full enterprise-wide production，并提到生产力、扩展能力、系统整合和成本下降；未给精确指标。这是客户侧自述，强于供应商案例但仍非独立审计。

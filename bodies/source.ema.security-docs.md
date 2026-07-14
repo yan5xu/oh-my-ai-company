@@ -1,0 +1,1 @@
+官方安全文档。列出 SOC 2 Type II、ISO 27001、ISO 42001、CSA STAR Level 1、HIPAA-aligned、GDPR 与 NIST 框架；多租户默认、单租户可选；TLS 1.2+、AES-256、CMEK；默认备份 365 天、RTO 4 小时、RPO 30 分钟。证书与受控报告仍应去 Trust Center 核验。

@@ -1,0 +1,1 @@
+官方产品页。App Navigator 在没有 API 时控制浏览器，可登录、点击、输入、滚动、跨页与提交表单；官方称使用 application-level map 与 live page reasoning，不只依赖固定脚本和坐标。没有公开独立可靠性测试。

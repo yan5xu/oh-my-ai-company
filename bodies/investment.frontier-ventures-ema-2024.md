@@ -1,0 +1,1 @@
+[[investor.frontier-ventures]] 参与 [[company.ema]] 2024 年早期融资；单家分配未披露。机构自身文章确认该关系，Ema 后续公告则写作 Frontier Capital，本库保留命名冲突。[[source.frontier-ventures.ema-investment-2024-03-05]] [[source.ema.funding-2024-07]]

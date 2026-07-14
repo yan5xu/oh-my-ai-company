@@ -1,0 +1,1 @@
+2026-06-17 Ema 官方案例。AMS 与 PwC 在 contingent workforce onboarding、合同延期等流程部署 Ema，连接 SAP Fieldglass、Beeline、TalentLink、ServiceNow、Outlook、Workday，并构建自定义前端、SLA、任务分配和审批。未披露硬 ROI，反而显示大型企业落地需要集成映射与 change partner。

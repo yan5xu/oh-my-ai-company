@@ -1,0 +1,1 @@
+官方公司页。给出两位联合创始人履历与历史线：2023-02 在 California founded，2024-05 Bangalore office/50 employees，随后扩到 150 employees，并设 London、Canada office。页面结构无法完全确认每个节点的精确月份，人数按官方自述。

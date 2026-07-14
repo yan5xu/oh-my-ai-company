@@ -1,0 +1,1 @@
+官方集成页，声称 250+ native integrations、双向实时同步、字段级控制与 Push API。与早期 200+ connectors 口径相比属于产品演进或页面口径差异。

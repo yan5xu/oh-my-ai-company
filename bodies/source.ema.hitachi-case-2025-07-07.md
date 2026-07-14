@@ -1,0 +1,1 @@
+2025-07-07 Ema 官方客户案例。首阶段覆盖 Hitachi Digital 五家业务、共享 HR 服务支持 40,000+ 员工；Skye 对接 ServiceNow、SAP、Workday、ADP，并在 Azure/GCP、Teams/Google Chat 上运行。供应商称 <8 周上线、HR tickets 月降 30%、解决时间从天到分钟、准确率 90%+；标题另称 HR 效率提升 70%，正文未给测算方法。

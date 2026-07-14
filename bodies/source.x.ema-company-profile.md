@@ -1,0 +1,1 @@
+2026-07-15 抓取：@Ema_Unlimited 约 483 followers、166 tweets。X 体量远小于公司 LinkedIn，说明主传播阵地不在 X。

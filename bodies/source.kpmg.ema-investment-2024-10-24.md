@@ -1,0 +1,1 @@
+KPMG 2024-10-24 官方公告：KPMG LLP 对 Ema 做 minority equity investment，作为其 AI agent 战略的一部分；未披露金额。公告称该投资属于由 Accel 和 Section 32 领投的 2024 Series A。

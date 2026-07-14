@@ -1,0 +1,1 @@
+2026-07-15 抓取：LinkedIn 显示 51–200 位员工、约 13.4 万关注者、San Francisco；employees 搜索 total=252。与官网 150 employees 存在口径/时间差，不作为精确 headcount。

@@ -1,0 +1,1 @@
+2024-07-31 官方融资与产品公告。额外融资 3600 万美元，将 Series A 扩大到 5000 万美元，累计资本超过 6100 万美元；Accel 和 Section 32 领投，Prosus、Hitachi Ventures、Sozo Ventures、Wipro Ventures、SCB10X、Frontier Capital、Colle Capital 参与。同期发布 AI Employee Builder 与 Azure/GCP on-prem。

@@ -1,0 +1,1 @@
+官方产品文档。AI Employee 被定义为 agentic AI mesh；生命周期为 Create、Configure、Deploy、Monitor；支持 Web Chat、Slack/Teams/Google Chat、Voice、Agentic Dashboard、Document Editor、应用集成与 API。文档当前列出 40+ 模型、9+ provider。

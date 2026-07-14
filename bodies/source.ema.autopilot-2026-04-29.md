@@ -1,0 +1,1 @@
+2026-04-29 官方发布。Ema 称过去数月用 Autopilot 帮助合作伙伴上线 500+ AI Employees，并将构建视为 10%、后续 debug/test/maintain/evolve 视为 90%。500 部署为供应商自报，无独立审计。
