@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, rmSync } from "node:fs";
 import { resolve } from "node:path";
+import { matchesSensitivePattern } from "./publication-safety.mjs";
 
 const db = resolve("generated/publication-check.db");
 const vault = resolve(process.env.MEMEX_VAULT || "..");
@@ -37,6 +38,10 @@ function rows(target, statement) {
 function assert(condition, message) {
   if (!condition) throw new Error(`publication check failed: ${message}`);
 }
+
+assert(matchesSensitivePattern("/Users/cp/private", "/Users/"), "absolute user paths are not blocked");
+assert(!matchesSensitivePattern("https://example.com/users/public", "/Users/"), "public URL path is treated as a user directory");
+assert(matchesSensitivePattern("API_KEY=secret", "api_key="), "credential patterns are not case-insensitive");
 
 assert(manifest.mode === "full-vault", "publication mode is not full-vault");
 
@@ -80,9 +85,9 @@ for (const object of sourceObjects) {
 }
 
 for (const object of publishedObjects) {
-  const content = `${object.body}\n${object.fields_json}`.toLowerCase();
+  const content = `${object.body}\n${object.fields_json}`;
   for (const pattern of manifest.sensitive_patterns || []) {
-    assert(!content.includes(String(pattern).toLowerCase()), `${object.id} contains sensitive pattern ${JSON.stringify(pattern)}`);
+    assert(!matchesSensitivePattern(content, pattern), `${object.id} contains sensitive pattern ${JSON.stringify(pattern)}`);
   }
   for (const match of object.body.matchAll(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g)) {
     assert(publicIDs.has(match[1]), `${object.id} links to missing object ${match[1]}`);

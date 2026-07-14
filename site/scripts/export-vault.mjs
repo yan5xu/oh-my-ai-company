@@ -4,6 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, extname, relative, resolve, sep } from "node:path";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
+import { matchesSensitivePattern } from "./publication-safety.mjs";
 
 const vault = resolve(process.argv[2] || "..");
 const output = resolve(process.argv[3] || "generated/vault.sql");
@@ -46,7 +47,7 @@ function readBody(bodyPath) {
 function assertPublicText(value, context) {
   const text = String(value || "");
   for (const pattern of manifest.sensitive_patterns || []) {
-    if (text.toLowerCase().includes(String(pattern).toLowerCase())) {
+    if (matchesSensitivePattern(text, pattern)) {
       throw new Error(`sensitive pattern ${JSON.stringify(pattern)} in ${context}`);
     }
   }
