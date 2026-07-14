@@ -19,6 +19,7 @@ includesAll(home.body, [
   "<title>Oh My AI Company — Evidence-traceable AI company atlas</title>",
   '<meta name="google-site-verification" content="y58gkdLQcQrxFG3fj1Xyf6zhNXpxUNLQ-yYLa1ffPTk">',
   '<meta name="ahrefs-site-verification" content="7eac0aad1691283de095cbce82756447c55a0bb8368c45f0ec2b75c6dc99d99b">',
+  '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
   '<link rel="canonical" href="https://companies.yan5xu.ai/">',
   'type="application/ld+json"',
   "Follow AI companies through evidence"
@@ -82,5 +83,13 @@ assert(redirect.headers.get("location") === new URL("/companies/kernel", base).t
 const image = await fetch(new URL("/og-default.png", base));
 assert(image.status === 200, `default image: expected 200, got ${image.status}`);
 assert(image.headers.get("content-type") === "image/png", `default image: unexpected content type ${image.headers.get("content-type")}`);
+
+const favicon = await fetch(new URL("/favicon.svg", base));
+assert(favicon.status === 200, `favicon: expected 200, got ${favicon.status}`);
+assert(favicon.headers.get("content-type")?.includes("image/svg+xml"), `favicon: unexpected content type ${favicon.headers.get("content-type")}`);
+
+const legacyFavicon = await fetch(new URL("/favicon.ico", base), { redirect: "manual" });
+assert(legacyFavicon.status === 301, `legacy favicon: expected 301, got ${legacyFavicon.status}`);
+assert(legacyFavicon.headers.get("location") === new URL("/favicon.svg", base).toString(), "legacy favicon: unexpected location");
 
 console.log(`SEO verification passed: ${base}`);

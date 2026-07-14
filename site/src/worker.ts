@@ -940,6 +940,9 @@ export default {
         if (response) return response;
       }
       if (url.pathname === "/robots.txt") return serveRobots(request);
+      if (url.pathname === "/favicon.ico") {
+        return Response.redirect(new URL("/favicon.svg", url.origin).toString(), 301);
+      }
       if (url.pathname === "/sitemap.xml" || url.pathname.startsWith("/sitemaps/")) {
         const sitemap = await serveSitemap(request, env);
         if (sitemap) return sitemap;

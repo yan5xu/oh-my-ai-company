@@ -32,3 +32,7 @@ copyFileSync(
   resolve(siteRoot, "src/home/assets/research-graph.png"),
   resolve(siteRoot, "dist/og-default.png")
 );
+copyFileSync(
+  resolve(siteRoot, "src/home/assets/favicon.svg"),
+  resolve(siteRoot, "dist/favicon.svg")
+);

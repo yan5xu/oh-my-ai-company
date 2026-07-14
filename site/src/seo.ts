@@ -338,6 +338,7 @@ export function renderDocument(options: DocumentOptions) {
     ...(seoConfig.site.ahrefs_site_verification
       ? [`<meta name="ahrefs-site-verification" content="${escapeHTML(seoConfig.site.ahrefs_site_verification)}">`]
       : []),
+    `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`,
     `<link rel="canonical" href="${escapeHTML(canonical)}">`,
     `<meta property="og:site_name" content="${escapeHTML(seoConfig.site.name)}">`,
     `<meta property="og:title" content="${escapeHTML(options.title)}">`,
