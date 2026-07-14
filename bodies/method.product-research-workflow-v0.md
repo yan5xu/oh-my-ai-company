@@ -219,6 +219,20 @@ Raft 是第一个同时强烈暴露 rebrand、官方新指标和横向多 Agent 
 - **动态图表自洽校验**：读取 Highcharts 后，用页面 total、最新月 MoM、时间范围和域名再次验证；图表仍在更新时不落数。
 - **官方结构化元数据兜底**：App Store 等页面因地区跳转或动态渲染抓不到时，优先使用平台官方 lookup/API；空壳页面本身不能证明应用不存在。
 
+## 2026-07-15 Lindy 调研补充
+
+本轮对象：[[company.lindy]]，历史主体：[[company.teamflow]]。产品判断：[[note.lindy-product-takeaway-2026-07-15]]；过程记录：[[note.lindy-research-run-2026-07-15]]。
+
+回看 Ema、Relevance AI 与本轮材料，新增五个候选动作：
+
+- **前台/底座双读**：首页定位回答当前卖什么，完整 docs 回答平台仍能做什么；二者不一致时先判断产品分层，不急着写成 pivot。
+- **资本连续性审计**：rebrand/pivot 后沿原公司公告、投资人 portfolio 和精确轮次重建融资，不把历史累计金额搬到新产品时间线。
+- **外部副作用审计**：对发信、建会、改记录、付款等动作，固定查授权来源、独立 validator、HITL、豁免、audit 与 eval。
+- **模型迁移质量链**：记录 offline eval、small live rollout、长期 retention、回滚与成本；离线通过不等于线上可用。
+- **重复 launch 序列**：把同一产品的多次 Product Hunt/公开发布看作连续发行，比较每次 Elevator Pitch、榜单、渠道和后续流量，而不是只保存一次首发。
+
+Lindy 只提供一个“成品助理入口 + 平台底座”样本。后续 11x、Artisan 或同类产品出现第二个可比样本后，再决定是否固化。
+
 Bloome 还再次验证了主体边界：共享 founder、员工和开发者账号只说明组织连续性，不能自动迁移另一个产品的融资、团队规模或经营数据。
 
 ## 2026-07-14 Skyfire 调研补充
