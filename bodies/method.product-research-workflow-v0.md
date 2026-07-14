@@ -460,3 +460,25 @@ Paperclip 的 subscription/Hermes 成本上报空缺说明：没有 telemetry，
 ### 传播规模与使用规模分开
 
 开源首发的 X views、GitHub stars、官网 visits、YouTube relay 共同说明 distribution；客户、部署、活跃 workspace、留存、accepted deliverables 和收入才说明持续使用。流量出现 launch peak 后回落时，不把关注峰值写成业务线性增长。
+
+## 2026-07-15 NewCore 调研补充
+
+本轮对象：[[company.newcore]]。产品判断：[[note.newcore-product-takeaway-2026-07-15]]；过程记录：[[note.newcore-research-run-2026-07-15]]。
+
+回看 Kernel 的 agent identity、Sapiom 的 access/payment governance、Paperclip 的 adapter control loop，以及本轮 NewCore、Arcade、Oasis、Astrix 的身份架构后，补充一项身份/授权产品专用检查。它不替代通用治理控制环。
+
+### 把 Agent identity 拆成可执行的授权链
+
+不要把“Agent 是一等身份”或“Agent 只是应用”直接当结论。依次核验：
+
+1. principal：app、Agent instance、sub-agent 分别如何标识；
+2. delegation：代表哪个用户或组织，委托来源能否追溯；
+3. task/session：权限与当前任务、会话如何绑定；
+4. scope：目标资源和动作能表达多细，是否受 destination API 限制；
+5. token：谁铸造、有效期多长、是否会积累 standing access；
+6. policy/enforcement：认证、token mint、tool call 是否都经过同一控制面，有无旁路；
+7. revocation/evidence：能否实时撤销、保留 lineage 与审计，同时避免 secret 泄漏。
+
+Identity inventory 证明“看得见”，不证明“拦得住”；JIT token 证明“凭据可短期化”，不证明“任务意图被正确翻译”；EMA/SSO 证明“入口可集中”，不证明“每次动作合理”。报告应分别表述。
+
+这项检查已在多个治理样本中获得支持，但关于 agent-as-NHI 与 agent-as-app 的最佳边界仍未收敛，后续继续用真实客户部署复验。
