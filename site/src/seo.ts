@@ -32,6 +32,7 @@ type SEOConfig = {
     default_image: string;
     github_url: string;
     google_site_verification?: string;
+    ahrefs_site_verification?: string;
     indexnow_key?: string;
   };
   routes: Record<string, RouteConfig>;
@@ -333,6 +334,9 @@ export function renderDocument(options: DocumentOptions) {
     `<meta name="robots" content="${robots}">`,
     ...(seoConfig.site.google_site_verification
       ? [`<meta name="google-site-verification" content="${escapeHTML(seoConfig.site.google_site_verification)}">`]
+      : []),
+    ...(seoConfig.site.ahrefs_site_verification
+      ? [`<meta name="ahrefs-site-verification" content="${escapeHTML(seoConfig.site.ahrefs_site_verification)}">`]
       : []),
     `<link rel="canonical" href="${escapeHTML(canonical)}">`,
     `<meta property="og:site_name" content="${escapeHTML(seoConfig.site.name)}">`,

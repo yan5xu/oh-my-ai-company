@@ -18,6 +18,7 @@ assert(home.response.status === 200, `home: expected 200, got ${home.response.st
 includesAll(home.body, [
   "<title>Oh My AI Company — Evidence-traceable AI company atlas</title>",
   '<meta name="google-site-verification" content="y58gkdLQcQrxFG3fj1Xyf6zhNXpxUNLQ-yYLa1ffPTk">',
+  '<meta name="ahrefs-site-verification" content="7eac0aad1691283de095cbce82756447c55a0bb8368c45f0ec2b75c6dc99d99b">',
   '<link rel="canonical" href="https://companies.yan5xu.ai/">',
   'type="application/ld+json"',
   "Follow AI companies through evidence"
