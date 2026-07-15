@@ -284,7 +284,7 @@ export function firstObjectImage(object: SEOObject, normalizeAsset: (path: strin
   const html = object.body.match(/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/i)?.[1];
   const source = markdown || html || "";
   if (/^https?:\/\//i.test(source)) return source;
-  const key = normalizeAsset(source, object.body_path);
+  const key = source.startsWith("assets/") ? normalizeAsset(`/${source}`, "") : normalizeAsset(source, object.body_path);
   return key.startsWith("assets/") ? absoluteURL(`/media/${key.split("/").map(encodeURIComponent).join("/")}`) : absoluteURL(seoConfig.site.default_image);
 }
 

@@ -58,6 +58,20 @@ assert(lindyObjectResponse.response.status === 200, `lindy API: expected 200, go
 const lindyObject = JSON.parse(lindyObjectResponse.body).object;
 assert(lindyDescription === lindyObject.fields.one_liner, "lindy: long Chinese one_liner should remain intact");
 
+const pancake = await read("/companies/pancake");
+assert(pancake.response.status === 200, `pancake: expected 200, got ${pancake.response.status}`);
+includesAll(pancake.body, [
+  '<meta property="og:image" content="https://companies.yan5xu.ai/media/assets/pancake/hero.png">',
+  '<meta name="twitter:image" content="https://companies.yan5xu.ai/media/assets/pancake/hero.png">'
+], "pancake vault-root image");
+
+const kylon = await read("/companies/kylon");
+assert(kylon.response.status === 200, `kylon: expected 200, got ${kylon.response.status}`);
+includesAll(kylon.body, [
+  '<meta property="og:image" content="https://companies.yan5xu.ai/media/assets/kylon/app-preview.png">',
+  '<meta name="twitter:image" content="https://companies.yan5xu.ai/media/assets/kylon/app-preview.png">'
+], "kylon vault-root image");
+
 const investments = await read("/api/run", {
   method: "POST",
   headers: { "content-type": "application/json" },
