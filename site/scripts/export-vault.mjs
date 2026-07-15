@@ -29,6 +29,47 @@ function sqlString(value) {
   return `'${String(value).replaceAll("\0", "").replaceAll("'", "''")}'`;
 }
 
+const MAX_SQL_STATEMENT_BYTES = 32 * 1024;
+const SQL_TEXT_CHUNK_BYTES = 4 * 1024;
+
+function chunkText(value, maxBytes = SQL_TEXT_CHUNK_BYTES) {
+  const chunks = [];
+  let chunk = "";
+  let bytes = 0;
+  for (const character of String(value || "")) {
+    const characterBytes = Buffer.byteLength(character);
+    if (chunk && bytes + characterBytes > maxBytes) {
+      chunks.push(chunk);
+      chunk = "";
+      bytes = 0;
+    }
+    chunk += character;
+    bytes += characterBytes;
+  }
+  if (chunk) chunks.push(chunk);
+  return chunks;
+}
+
+function pushTextUpdates(lines, table, column, keyColumn, key, value) {
+  for (const chunk of chunkText(value)) {
+    const statement = `UPDATE ${table} SET ${column} = ${column} || ${sqlString(chunk)} WHERE ${keyColumn} = ${sqlString(key)};`;
+    if (Buffer.byteLength(statement) > MAX_SQL_STATEMENT_BYTES) {
+      throw new Error(`generated SQL chunk exceeds statement budget for ${table}.${column}`);
+    }
+    lines.push(statement);
+  }
+}
+
+function pushMetadata(lines, key, value) {
+  const statement = `INSERT INTO metadata (key,value) VALUES (${sqlString(key)},${sqlString(value)});`;
+  if (Buffer.byteLength(statement) <= MAX_SQL_STATEMENT_BYTES) {
+    lines.push(statement);
+    return;
+  }
+  lines.push(`INSERT INTO metadata (key,value) VALUES (${sqlString(key)},'');`);
+  pushTextUpdates(lines, "metadata", "value", "key", key, value);
+}
+
 function parseJSON(value, fallback = {}) {
   try { return JSON.parse(value || ""); } catch { return fallback; }
 }
@@ -325,8 +366,21 @@ for (const object of objects) {
   const fieldsJSON = JSON.stringify(fieldsByID.get(object.id));
   const body = bodiesByID.get(object.id);
   const bodyHTML = bodyHTMLByID.get(object.id);
-  lines.push(`INSERT INTO objects (id,type_id,title,body,body_html,body_path,fields_json,created_at,updated_at) VALUES (${sqlString(object.id)},${sqlString(object.type_id)},${sqlString(object.title)},${sqlString(body)},${sqlString(bodyHTML)},${sqlString(object.body_path)},${sqlString(fieldsJSON)},${sqlString(object.created_at)},${sqlString(object.updated_at)});`);
-  lines.push(`INSERT INTO object_search (id,title,body,fields) VALUES (${sqlString(object.id)},${sqlString(object.title)},${sqlString(body)},${sqlString(fieldsJSON)});`);
+  const objectStatement = `INSERT INTO objects (id,type_id,title,body,body_html,body_path,fields_json,created_at,updated_at) VALUES (${sqlString(object.id)},${sqlString(object.type_id)},${sqlString(object.title)},${sqlString(body)},${sqlString(bodyHTML)},${sqlString(object.body_path)},${sqlString(fieldsJSON)},${sqlString(object.created_at)},${sqlString(object.updated_at)});`;
+  if (Buffer.byteLength(objectStatement) <= MAX_SQL_STATEMENT_BYTES) {
+    lines.push(objectStatement);
+  } else {
+    lines.push(`INSERT INTO objects (id,type_id,title,body,body_html,body_path,fields_json,created_at,updated_at) VALUES (${sqlString(object.id)},${sqlString(object.type_id)},${sqlString(object.title)},'','',${sqlString(object.body_path)},${sqlString(fieldsJSON)},${sqlString(object.created_at)},${sqlString(object.updated_at)});`);
+    pushTextUpdates(lines, "objects", "body", "id", object.id, body);
+    pushTextUpdates(lines, "objects", "body_html", "id", object.id, bodyHTML);
+  }
+  const searchStatement = `INSERT INTO object_search (id,title,body,fields) VALUES (${sqlString(object.id)},${sqlString(object.title)},${sqlString(body)},${sqlString(fieldsJSON)});`;
+  if (Buffer.byteLength(searchStatement) <= MAX_SQL_STATEMENT_BYTES) {
+    lines.push(searchStatement);
+  } else {
+    lines.push(`INSERT INTO object_search (id,title,body,fields) VALUES (${sqlString(object.id)},${sqlString(object.title)},'',${sqlString(fieldsJSON)});`);
+    pushTextUpdates(lines, "object_search", "body", "id", object.id, body);
+  }
 }
 for (const link of links) {
   lines.push(`INSERT INTO links (id,from_object_id,to_object_id,kind,relation,line,text,resolved) VALUES (${Number(link.id)},${sqlString(link.from_object_id)},${sqlString(link.to_object_id)},${sqlString(link.kind)},${sqlString(link.relation)},${Number(link.line || 0)},${sqlString(link.text || "")},1);`);
@@ -336,17 +390,17 @@ for (const asset of publicAssets) {
 }
 
 const generatedAt = new Date().toISOString();
-lines.push(`INSERT INTO metadata (key,value) VALUES ('generated_at',${sqlString(generatedAt)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('publication_manifest_version',${sqlString(manifest.version)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('publication_mode',${sqlString(manifest.mode)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('company_count',${sqlString(companyCount)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('object_count',${sqlString(objects.length)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('link_count',${sqlString(links.length)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('asset_count',${sqlString(publicAssets.length)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('seo_config_version',${sqlString(seoConfig.version)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('seo_indexable_count',${sqlString(seoIndexableCount)});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('type_definitions',${sqlString(JSON.stringify(typeDefinitions))});`);
-lines.push(`INSERT INTO metadata (key,value) VALUES ('graph_views',${sqlString(JSON.stringify(graphViews))});`);
+pushMetadata(lines, "generated_at", generatedAt);
+pushMetadata(lines, "publication_manifest_version", manifest.version);
+pushMetadata(lines, "publication_mode", manifest.mode);
+pushMetadata(lines, "company_count", companyCount);
+pushMetadata(lines, "object_count", objects.length);
+pushMetadata(lines, "link_count", links.length);
+pushMetadata(lines, "asset_count", publicAssets.length);
+pushMetadata(lines, "seo_config_version", seoConfig.version);
+pushMetadata(lines, "seo_indexable_count", seoIndexableCount);
+pushMetadata(lines, "type_definitions", JSON.stringify(typeDefinitions));
+pushMetadata(lines, "graph_views", JSON.stringify(graphViews));
 
 const report = {
   manifest_version: manifest.version,
