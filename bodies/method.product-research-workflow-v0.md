@@ -290,7 +290,7 @@ Polsia 还形成候选 GTM 模式 [[concept.live-operating-dashboard-as-gtm]]：
 
 NanoCorp 是 [[concept.live-operating-dashboard-as-gtm]] 的第二个高密度样本：看板能证明 operating activity，也会带来隐私、口径与成功率误读。它还新增 [[concept.production-trace-agent-harness-loop]]：生产失败轨迹可以持续转成 skills、工具 contract 和恢复策略。两个模式仍需在非自治公司产品中继续验证适用边界。
 
-本轮也修正运行入口经验：`/tmp` 适合短期下载和截图，不适合作为唯一 CLI 入口；Memex 日常入口统一使用持久路径 `/Users/cp/workspace/assistant/.env/bin/mmx`。平台 CLI/浏览器离线属于工具域问题，通知 owner 后继续不依赖该能力的研究，不用 ad hoc 绕过制造第二套流程。
+本轮也修正运行入口经验：`/tmp` 适合短期下载和截图，不适合作为唯一 CLI 入口；Memex 日常入口由工作区环境提供持久的 `mmx` 命令，并在自动化中通过 `MMX` 环境变量引用。平台 CLI/浏览器离线属于工具域问题，通知 owner 后继续不依赖该能力的研究，不用 ad hoc 绕过制造第二套流程。
 
 ## 2026-07-15 Cofounder 调研补充
 
