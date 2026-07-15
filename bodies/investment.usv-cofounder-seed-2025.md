@@ -1,0 +1,1 @@
+[[investor.union-square-ventures]] 领投 [[company.cofounder]] 2025 年 870 万美元 seed。870 万美元是整轮总额，未披露 USV 单家出资。证据：[[source.forbes.cofounder-seed-2025-12-08]]、[[source.cofounder.seed-announcement-2025-12-08]]。
