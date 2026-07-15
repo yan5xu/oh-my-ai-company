@@ -1,0 +1,1 @@
+# SignalFire → Motion (Series A)

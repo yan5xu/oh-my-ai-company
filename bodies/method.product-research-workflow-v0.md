@@ -595,3 +595,35 @@ YC、LinkedIn 和媒体适合发现人物；Companies House、州公司注册、
 ### Partner 声量按 distribution evidence 处理
 
 当官方提供高比例长期佣金时，Reddit、X、YouTube 和博客里的正面内容默认先做 affiliate provenance audit。重复文案、折扣码、referral URL 和 disclosure 证明获客网络存在，但不能直接证明满意度。只有独立客户侧、长期使用和可核验结果才能升级为产品采用证据。
+
+## 2026-07-15 Motion / Wonderly 调研补充
+
+本轮对象：[[company.motion]] 与 [[company.wonderly]]。产品判断：[[note.motion-product-takeaway-2026-07-15]]、[[note.wonderly-product-takeaway-2026-07-15]]；过程记录：[[note.motion-wonderly-research-run-2026-07-15]]。
+
+对照 Marblism 的产品换轨、Sintra 的 credits、Ema 的企业交付与本轮双品牌后，增加两项适用于产品谱系和结果型 Agent 的检查。
+
+### 品牌关系用五类证据交叉核验
+
+当旧官网、新域名、招聘页和员工简介互相称为 rebrand、spin-off 或新产品时，不直接选择一个标签。分别核验：
+
+1. 法律主体与 Terms/Privacy provider；
+2. 创始人、员工和招聘职位是否共享；
+3. 旧品牌与新品牌是否同时有活跃产品、定价和流量；
+4. 社区迁移、功能弃用和客户沟通；
+5. 融资是否投向同一法人，是否存在独立轮次。
+
+只有官方交易或公司文件支持时才写 acquisition；只有旧产品明确停止且新品牌承接时才写完整 rebrand。否则优先建独立主体，以产品谱系和共享团队连接。
+
+### 结果型 Agent 增加商业控制环
+
+对 revenue share、pay-on-result、lead guarantee 或 outcome pricing，不只问模型是否完成任务，还要追：
+
+1. outcome 的定义、基线和时间窗；
+2. attribution 由谁记录和审计；
+3. lead/customer ownership 与独占性；
+4. 退款、失败、取消与 tail period；
+5. 广告、电话、短信、邮件和支付的合规责任；
+6. 软件、第三方服务和人工实施各自承担什么；
+7. 收入提升是否有独立客户侧证据。
+
+Wonderly 说明结果定价会把治理从技术 runtime 扩展到合同、归因与渠道冲突。它不能被简化为“更接近价值的 pricing”。
