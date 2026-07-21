@@ -62,6 +62,8 @@
 
 证据优先级：监管 filing / 官方公告 > 强媒体 > 数据库聚合 > 社区。Form D 的 offering amount、amount sold、filing date 必须分别写，不能把 offering target 写成 final close。
 
+监管链要拆成三步：名称/品牌只用于 entity discovery，CIK 与 accession 用于 filing history，原始 XML/PDF 才用于字段解析。名称搜索 no-hit 不等于 vehicle 不存在；已知 CIK 时优先直接读 filings。Form ADV 的 private fund GAV、Form D 的 offering/sold、机构公告的 subscribed/closed 是不同口径，必须并排保留，不能用其中一个覆盖另一个。
+
 ### 多阶段机构先画品牌下的资金地图
 
 大型机构不能只建一个 investor 再挂全部 company。先区分：

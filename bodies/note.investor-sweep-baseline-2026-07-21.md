@@ -16,7 +16,7 @@ First Round 试点证明单家机构可以形成完整的 Investor -> Person -> 
 | [[investor.general-catalyst]] | 14 | 14 | 18,022 | 4 / 20 / 8 | 已补深，资本工具、人物与机制已结构化 |
 | [[investor.y-combinator]] | 13 | 14 | 401 | 0 / 8 / 0 | 高交集，但 accelerator 机制未系统迁入 |
 | [[investor.conviction]] | 13 | 13 | 12,645 | 4 / 23 / 8 | 已完成小型 AI-native 校准 |
-| [[investor.leonis-capital]] | 8 | 8 | 1,327 | 0 / 3 / 0 | 高交集、小型机构，资产明显不足 |
+| [[investor.leonis-capital]] | 8 | 8 | 17,669 | 4 / 15 / 8 | 已完成研究驱动小型 AI-native 机构样本 |
 | [[investor.first-round-capital]] | 7 | 7 | 12,989 | 7 / 24 / 9 | 本轮完整试点 |
 | [[investor.lightspeed-venture-partners]] | 7 | 7 | 14,243 | 0 / 36 / 0 | 机构报告强，结构化人物/触点债务高 |
 | [[investor.andreessen-horowitz]] | 5 | 5 | 14,048 | 7 / 32 / 11 | 已完成多基金平台型校准 |
@@ -88,7 +88,7 @@ First Round 试点证明单家机构可以形成完整的 Investor -> Person -> 
 
 - 投资机构 SOP 已经 First Round、a16z、Conviction 三类机构校准，进入 `active v0`；
 - 全面摸排采用三级深度，而不是统一模板；
-- 校准批已完成，第一批从 General Catalyst 开始，随后处理 Leonis、Lightspeed 与 YC 分支；
+- 校准批已完成；第一批的 General Catalyst 与 Leonis 已收口，下一步处理 Lightspeed 结构债务与 YC accelerator 分支；
 - 投资关系的真实性优先于机构介绍的完整度；
 - 每批结束重新计算覆盖表，防止旧优先级失真。
 
