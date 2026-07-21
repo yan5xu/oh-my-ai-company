@@ -1,0 +1,1 @@
+# General Catalyst team directory

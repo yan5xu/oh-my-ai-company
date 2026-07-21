@@ -13,13 +13,13 @@ First Round 试点证明单家机构可以形成完整的 Investor -> Person -> 
 | 机构 | 关联公司 | 投资边 | 当前正文 | 人物 / 来源 / 触点 | 初步状态 |
 |---|---:|---:|---:|---:|---|
 | [[investor.accel]] | 18 | 19 | 20,219 | 6 / 57 / 6 | 已深研，可作成熟机构参照 |
-| [[investor.general-catalyst]] | 14 | 14 | 5,112 | 0 / 11 / 5 | portfolio 较强，人物与机制薄 |
+| [[investor.general-catalyst]] | 14 | 14 | 18,022 | 4 / 20 / 8 | 已补深，资本工具、人物与机制已结构化 |
 | [[investor.y-combinator]] | 13 | 14 | 401 | 0 / 8 / 0 | 高交集，但 accelerator 机制未系统迁入 |
-| [[investor.conviction]] | 13 | 13 | 4,699 | 0 / 13 / 4 | AI 原生 thesis 已有基础，人物网络缺失 |
+| [[investor.conviction]] | 13 | 13 | 12,645 | 4 / 23 / 8 | 已完成小型 AI-native 校准 |
 | [[investor.leonis-capital]] | 8 | 8 | 1,327 | 0 / 3 / 0 | 高交集、小型机构，资产明显不足 |
 | [[investor.first-round-capital]] | 7 | 7 | 12,989 | 7 / 24 / 9 | 本轮完整试点 |
 | [[investor.lightspeed-venture-partners]] | 7 | 7 | 14,243 | 0 / 36 / 0 | 机构报告强，结构化人物/触点债务高 |
-| [[investor.andreessen-horowitz]] | 5 | 5 | 22 | 0 / 5 / 0 | 多阶段巨型机构，接近空壳 |
+| [[investor.andreessen-horowitz]] | 5 | 5 | 14,048 | 7 / 32 / 11 | 已完成多基金平台型校准 |
 | [[investor.benchmark]] | 4 | 4 | 12 | 0 / 6 / 0 | 合伙制模型值得独立研究，当前空壳 |
 | [[investor.bek-ventures]] | 4 | 4 | 1,082 | 0 / 8 / 0 | 标准档案候选 |
 | [[investor.sequoia-capital]] | 3 | 3 | 18 | 0 / 1 / 0 | 品牌与 vehicle 容易混淆，当前空壳 |
@@ -72,7 +72,7 @@ First Round 试点证明单家机构可以形成完整的 Investor -> Person -> 
 ### 第一批核心补齐
 
 - [[investor.y-combinator]]：需要单独的 accelerator/batch/alumni/network 版本；
-- [[investor.general-catalyst]]：补 current people、Creation/Customer Value 等机制与当前 AI cluster；
+- [[investor.general-catalyst]]：已补 current people、Creation/Customer Value 等机制与当前 AI cluster；
 - [[investor.leonis-capital]]：验证小型机构连续发现 agent infra 的能力来源；
 - [[investor.lightspeed-venture-partners]]：不重写已有报告，优先补结构化人物与监控入口。
 
@@ -86,9 +86,9 @@ First Round 试点证明单家机构可以形成完整的 Investor -> Person -> 
 
 ## 当前决策
 
-- First Round SOP 保持 `draft`，不因一个成功案例直接固化；
+- 投资机构 SOP 已经 First Round、a16z、Conviction 三类机构校准，进入 `active v0`；
 - 全面摸排采用三级深度，而不是统一模板；
-- 下一步优先用 a16z 与 Conviction 做类型校准；
+- 校准批已完成，第一批从 General Catalyst 开始，随后处理 Leonis、Lightspeed 与 YC 分支；
 - 投资关系的真实性优先于机构介绍的完整度；
 - 每批结束重新计算覆盖表，防止旧优先级失真。
 
