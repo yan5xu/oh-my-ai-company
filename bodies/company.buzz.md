@@ -85,7 +85,13 @@ Terms 禁止使用 hosted Service 来构建、训练、优化、评估、benchma
 
 [[traffic.similarweb.buzz-2026-h1]] 的 scope 是 Jan-Jun 2026 closed six months、Worldwide、All Traffic、root-only。结果为完整 **no-data/unavailable**：没有 target total/device/monthly series，ranks 为“-”，engagement 为 N/A，渠道/搜索/referral/social 等均无 target rows。
 
-这不是 zero traffic。Provider 页面还残留 dan.com 域名售卖描述，属于 stale metadata conflict。Semrush 没有加载有效 report，按 node/subscription boundary 合法 STOP。当前流量数据不能支持“无人使用”“采用很低”或任何市场排名。
+这不是 zero traffic。Provider 页面还残留 dan.com 域名售卖描述，属于 stale metadata conflict。
+
+Semrush 当前有效观察 [[traffic.semrush.buzz-2026-07-21]] 的 page scope 是 root domain、Worldwide、desktop、report date 2026-07-21、USD。AI Visibility、Mentions 和 Cited pages 均显示 0；Authority Score=2 且标注“缺少自然流量”；Referring Domains=132、Backlinks=567；organic/paid traffic 与 keywords cards 为“不可用”。2Y/daily traffic chart 同时渲染 organic/paid/branded 三条全零线，覆盖 729 个日位置。卡片“不可用”与 chart numeric zero 是 provider 内部语义分裂，不能互相覆盖，也不能升级为采用或业务结论。[[source.semrush.buzz-domain-overview-2026-07-21]]
+
+较早的 Semrush node/subscription STOP 仍作为 2026-07-22T03:12:39Z 的合法 point-in-time 事件保留；05:08 后同一授权入口正常加载 report，因此它不再代表当前 availability。[[source.semrush.buzz-access-stop-2026-07-22]]
+
+综合两个 provider，当前数据仍不能支持“无人使用”“采用很低”或任何市场排名。
 
 ## 竞争边界
 

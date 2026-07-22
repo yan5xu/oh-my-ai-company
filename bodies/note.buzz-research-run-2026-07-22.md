@@ -9,9 +9,10 @@
 5. LinkedIn 登录态 top-card + official author + Git history 识别关键 operator，不把 aliases 当团队人数。
 6. X/HN/TechCrunch/The New Stack 做 launch attention、外部 framing 和反例交叉。
 7. Reddit 三个查询、Product Hunt、WeChat、小红书和 YouTube 搜索未找到可确认的独立产品 adoption 样本；不把噪声写成覆盖。
-8. Traffic 由 cici-traffic 独立完成。Similarweb no-data、stale metadata conflict；Semrush legal STOP。Research 未重复采集。
+8. Traffic 由 cici-traffic 独立完成。Similarweb no-data、stale metadata conflict；Semrush 先发生合法 point-in-time STOP，随后同一授权入口恢复并补交有效 Domain Overview。Research 未重复采集，只按 append-only lineage 写入两次观察。
 9. Hosted 实测 STOP：Terms 明确禁止用 hosted Service benchmark 竞争性服务，因此不注册、不登录 hosted community；公开代码与文档继续按 Apache-2.0 边界研究。
 10. 保存官网、产品 UI、GitHub、Block Engineering 和 Similarweb no-data 图片证据。
+11. Semrush 恢复后补存 Domain Overview 与 traffic trend 截图；card unavailable 与 chart numeric zero 分层保留，不合并成统一值。
 
 ## 方法增量
 

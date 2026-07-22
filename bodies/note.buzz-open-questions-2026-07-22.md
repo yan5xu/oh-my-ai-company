@@ -20,5 +20,5 @@
 - 官方公布 Block 内部或外部 adoption/retention。
 - Approval、mobile、forge、E2E DM、rate limit 由在建变为 ships。
 - Privacy/Support retention 冲突被修订。
-- Similarweb 出现可绑定 buzz.xyz 的真实 series，或 Semrush 合法 report 恢复。
+- Similarweb 出现可绑定 buzz.xyz 的真实 series；或 Semrush report date、AI/SEO cards、card-chart semantic split 出现实质变化。
 - 出现独立客户案例、迁移复盘或安全事件。
