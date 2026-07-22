@@ -76,6 +76,18 @@ assert.equal(
   "https://companies.yan5xu.ai/og-default.png"
 );
 
+const tallScreenshot = object([
+  "![Tall screenshot](../assets/example/tall.png)",
+  "![Representative screenshot](../assets/example/representative.png)"
+].join("\n"));
+assert.equal(
+  firstObjectImage(tallScreenshot, [
+    asset("assets/example/tall.png", "image/png", 598, 20580),
+    asset("assets/example/representative.png", "image/png", 2400, 1392)
+  ], normalizeAssetPath),
+  "https://companies.yan5xu.ai/media/assets/example/representative.png"
+);
+
 async function actualAsset(path: string, contentType: string): Promise<PublicAsset> {
   const metadata = await sharp(resolve("..", path)).metadata();
   return {
@@ -111,6 +123,30 @@ assert.equal(
     actualAsset("assets/leonis/alpha-program.png", "image/png")
   ]), normalizeAssetPath),
   "https://companies.yan5xu.ai/media/assets/leonis/home.png"
+);
+
+const actualMonidSource = object(
+  readFileSync(resolve("..", "bodies/source.monid.homepage-2026-07-22.md"), "utf8"),
+  "bodies/source.monid.homepage-2026-07-22.md"
+);
+assert.equal(
+  firstObjectImage(actualMonidSource, await Promise.all([
+    actualAsset("assets/monid/homepage-2026-07-22.png", "image/png"),
+    actualAsset("assets/monid/pricing-failure-faq-2026-07-22.png", "image/png")
+  ]), normalizeAssetPath),
+  "https://companies.yan5xu.ai/media/assets/monid/pricing-failure-faq-2026-07-22.png"
+);
+
+const actualMonidCompany = object(
+  readFileSync(resolve("..", "bodies/company.monid.md"), "utf8"),
+  "bodies/company.monid.md"
+);
+assert.equal(
+  firstObjectImage(actualMonidCompany, await Promise.all([
+    actualAsset("assets/monid/tools-catalog-2026-07-22.png", "image/png"),
+    actualAsset("assets/monid/app-signup-2026-07-22.png", "image/png")
+  ]), normalizeAssetPath),
+  "https://companies.yan5xu.ai/media/assets/monid/tools-catalog-2026-07-22.png"
 );
 
 console.log("OG image policy tests passed");

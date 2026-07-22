@@ -323,7 +323,11 @@ export function firstObjectImage(
   for (const path of objectImageAssetPaths(object, normalizeAsset)) {
     const asset = assets.get(path);
     if (!asset || !seoConfig.og_image_selection.allowed_content_types.includes(asset.content_type)) continue;
-    if (!asset.width || !asset.height || asset.width / asset.height > seoConfig.og_image_selection.maximum_aspect_ratio) continue;
+    if (
+      !asset.width
+      || !asset.height
+      || Math.max(asset.width / asset.height, asset.height / asset.width) > seoConfig.og_image_selection.maximum_aspect_ratio
+    ) continue;
     if (excludedOGFilename(path)) continue;
     return absoluteURL(`/media/${path.split("/").map(encodeURIComponent).join("/")}`);
   }
