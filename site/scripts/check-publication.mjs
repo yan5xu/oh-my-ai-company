@@ -151,6 +151,8 @@ for (const object of publishedObjects) {
 for (const asset of assets) {
   assert(existsSync(resolve(vault, asset.path)), `referenced asset is missing: ${asset.path}`);
   assert(publicIDs.has(asset.object_id), `asset owner is missing: ${asset.path}`);
+  assert(Number.isInteger(asset.size) && asset.size >= 0, `asset size is invalid: ${asset.path}`);
+  assert(/^[a-f0-9]{64}$/.test(asset.sha256 || ""), `asset sha256 is invalid: ${asset.path}`);
   if (asset.content_type.startsWith("image/")) {
     assert(Number.isInteger(asset.width) && asset.width > 0, `image width is missing: ${asset.path}`);
     assert(Number.isInteger(asset.height) && asset.height > 0, `image height is missing: ${asset.path}`);

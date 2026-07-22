@@ -145,11 +145,21 @@ Export, validate, and replace the public D1 projection:
 npm run data:sync
 ```
 
-Upload allowlisted assets and remove non-public local assets from R2:
+Preview the R2 asset delta without writing production state:
+
+```bash
+npm run assets:dry-run
+```
+
+Add `-- --verbose` to print every planned object operation.
+
+Upload only new or changed allowlisted assets, delete assets removed since the last successful sync, and publish the remote state manifest last:
 
 ```bash
 npm run assets:sync
 ```
+
+The first run after this incremental sync is introduced bootstraps the remote manifest and uploads the full allowlist once. Later runs compare SHA-256, size, content type, and cache policy against that manifest, so unchanged assets are skipped. If a PUT or DELETE fails, the remote manifest is not advanced and the next run safely retries the remaining delta.
 
 Build and deploy the Worker and frontend:
 

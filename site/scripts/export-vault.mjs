@@ -262,10 +262,16 @@ const objectByID = new Map(objects.map((object) => [object.id, object]));
 const bodiesByID = new Map(objects.map((object) => [object.id, publicBody(object)]));
 const bodyHTMLByID = new Map(objects.map((object) => [object.id, renderBodyHTML(bodiesByID.get(object.id), objectByID)]));
 const publicAssets = await Promise.all([...assetByPath.values()].map(async ({ local_path, ...asset }) => {
-  if (!asset.content_type.startsWith("image/")) return { ...asset, width: null, height: null };
-  const metadata = await sharp(local_path).metadata();
+  const bytes = readFileSync(local_path);
+  const integrity = {
+    size: bytes.byteLength,
+    sha256: createHash("sha256").update(bytes).digest("hex")
+  };
+  if (!asset.content_type.startsWith("image/")) return { ...asset, ...integrity, width: null, height: null };
+  const metadata = await sharp(bytes).metadata();
   return {
     ...asset,
+    ...integrity,
     width: Number.isFinite(metadata.width) ? metadata.width : null,
     height: Number.isFinite(metadata.height) ? metadata.height : null
   };

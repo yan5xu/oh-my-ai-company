@@ -1,76 +1,116 @@
 import { spawn } from "node:child_process";
-import { readFileSync, readdirSync, statSync } from "node:fs";
-import { basename, join, relative, resolve, sep } from "node:path";
+import { createHash } from "node:crypto";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { basename, join, resolve } from "node:path";
+import { buildRemoteState, createSyncPlan } from "./asset-sync-plan.mjs";
 
-const vault = resolve(process.argv[2] || "..");
-const root = resolve(vault, "assets");
+const args = process.argv.slice(2);
+const dryRun = args.includes("--dry-run");
+const verbose = args.includes("--verbose");
+const vaultArgument = args.find((argument) => !argument.startsWith("--")) || "..";
+const vault = resolve(vaultArgument);
 const publication = JSON.parse(readFileSync(resolve("generated/public-assets.json"), "utf8"));
-const allowed = new Set(publication.map((asset) => asset.path));
 const bucket = "oh-my-ai-company-assets";
+const stateKey = "_publication/public-assets-v1.json";
+const stateObject = `${bucket}/${stateKey}`;
 const wrangler = process.env.WRANGLER || resolve("node_modules/.bin/wrangler");
-const concurrency = 4;
+const concurrency = Math.max(1, Number.parseInt(process.env.ASSET_SYNC_CONCURRENCY || "4", 10) || 4);
+const retryDelayMilliseconds = Math.max(0, Number.parseInt(process.env.ASSET_SYNC_RETRY_DELAY_MS || "750", 10) || 0);
+const temporaryDirectory = mkdtempSync(join(tmpdir(), "omac-r2-assets-"));
+const downloadedStatePath = join(temporaryDirectory, "previous-state.json");
+const nextStatePath = join(temporaryDirectory, "next-state.json");
 
-const contentTypes = new Map([
-  ["avif", "image/avif"], ["gif", "image/gif"], ["jpeg", "image/jpeg"],
-  ["jpg", "image/jpeg"], ["json", "application/json"], ["pdf", "application/pdf"],
-  ["png", "image/png"], ["svg", "image/svg+xml"], ["webp", "image/webp"]
-]);
-
-function walk(dir) {
-  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    const path = join(dir, entry.name);
-    return entry.isDirectory() ? walk(path) : [path];
-  });
-}
-
-function runOnce(action, file) {
-  const rel = relative(root, file).split(sep).join("/");
-  const key = `${bucket}/assets/${rel}`;
-  const ext = basename(file).split(".").pop()?.toLowerCase() || "";
-  const args = action === "put"
-    ? ["r2", "object", "put", key, "--file", file, "--content-type", contentTypes.get(ext) || "application/octet-stream", "--cache-control", "public, max-age=31536000, immutable", "--remote"]
-    : ["r2", "object", "delete", key, "--remote"];
-  return new Promise((resolvePromise, reject) => {
-    const child = spawn(wrangler, args, { stdio: ["ignore", "pipe", "pipe"] });
+function runWrangler(commandArgs) {
+  return new Promise((resolvePromise) => {
+    const child = spawn(wrangler, commandArgs, { stdio: ["ignore", "pipe", "pipe"] });
+    let stdout = "";
     let stderr = "";
+    child.stdout.on("data", (chunk) => { stdout += chunk; });
     child.stderr.on("data", (chunk) => { stderr += chunk; });
-    child.on("exit", (code) => code === 0 ? resolvePromise({ action, rel }) : reject(new Error(`${action} ${rel}: ${stderr.trim()}`)));
+    child.on("error", (error) => resolvePromise({ code: -1, stdout, stderr: `${stderr}\n${error.message}` }));
+    child.on("exit", (code) => resolvePromise({ code: code ?? -1, stdout, stderr }));
   });
 }
 
-async function execute(action, file) {
-  let lastError;
+function commandError(label, result) {
+  return new Error(`${label}: ${(result.stderr || result.stdout || `exit ${result.code}`).trim()}`);
+}
+
+function isMissingObject(result) {
+  return result.code !== 0 && /(?:NoSuchKey|not found|does not exist|no such object|\b404\b)/i.test(`${result.stdout}\n${result.stderr}`);
+}
+
+async function readPreviousState() {
+  const result = await runWrangler(["r2", "object", "get", stateObject, "--file", downloadedStatePath, "--remote"]);
+  if (result.code === 0) return JSON.parse(readFileSync(downloadedStatePath, "utf8"));
+  if (isMissingObject(result)) return null;
+  throw commandError(`fetch ${stateKey}`, result);
+}
+
+async function runWithRetry(label, commandArgs) {
+  let lastResult;
   for (let attempt = 1; attempt <= 4; attempt += 1) {
-    try {
-      return await runOnce(action, file);
-    } catch (error) {
-      lastError = error;
-      if (attempt < 4) await new Promise((resolvePromise) => setTimeout(resolvePromise, attempt * 750));
+    lastResult = await runWrangler(commandArgs);
+    if (lastResult.code === 0) return;
+    if (attempt < 4 && retryDelayMilliseconds > 0) {
+      await new Promise((resolvePromise) => setTimeout(resolvePromise, attempt * retryDelayMilliseconds));
     }
   }
-  throw lastError;
+  throw commandError(label, lastResult);
 }
 
-const files = walk(root).filter((file) => statSync(file).isFile());
-const operations = files.map((file) => {
-  const path = `assets/${relative(root, file).split(sep).join("/")}`;
-  return { action: allowed.has(path) ? "put" : "delete", file };
-});
-for (const asset of allowed) {
-  const file = resolve(vault, asset);
-  if (!files.includes(file)) throw new Error(`public asset is missing locally: ${asset}`);
-}
-
-let cursor = 0;
-let completed = 0;
-async function worker() {
-  while (cursor < operations.length) {
-    const operation = operations[cursor++];
-    const result = await execute(operation.action, operation.file);
-    completed += 1;
-    console.log(`[${completed}/${operations.length}] ${result.action} ${result.rel}`);
+async function executePool(entries, action) {
+  let cursor = 0;
+  let completed = 0;
+  async function worker() {
+    while (cursor < entries.length) {
+      const entry = entries[cursor++];
+      const object = `${bucket}/${entry.path}`;
+      const commandArgs = action === "put"
+        ? ["r2", "object", "put", object, "--file", resolve(vault, entry.path), "--content-type", entry.content_type, "--cache-control", entry.cache_control, "--remote"]
+        : ["r2", "object", "delete", object, "--remote"];
+      await runWithRetry(`${action} ${entry.path}`, commandArgs);
+      completed += 1;
+      console.log(`[${completed}/${entries.length}] ${action} ${entry.path}`);
+    }
   }
+  await Promise.all(Array.from({ length: Math.min(concurrency, entries.length) }, worker));
 }
 
-await Promise.all(Array.from({ length: Math.min(concurrency, operations.length) }, worker));
-console.log(`Published ${allowed.size} referenced assets and removed ${operations.length - allowed.size} unreferenced assets from ${bucket}`);
+try {
+  for (const entry of publication) {
+    const localPath = resolve(vault, entry.path);
+    if (!localPath.startsWith(`${vault}/`) || basename(localPath) === "") throw new Error(`invalid public asset path: ${entry.path}`);
+    const bytes = readFileSync(localPath, { flag: "r" });
+    const sha256 = createHash("sha256").update(bytes).digest("hex");
+    if (bytes.byteLength !== entry.size || sha256 !== entry.sha256) {
+      throw new Error(`public asset changed after export: ${entry.path}; rerun publication:check`);
+    }
+  }
+
+  const previousState = await readPreviousState();
+  const plan = createSyncPlan(publication, previousState);
+  console.log(`${dryRun ? "Dry run" : "Plan"}: ${plan.puts.length} put, ${plan.deletes.length} delete, ${plan.unchanged.length} unchanged${plan.bootstrap ? " (initial manifest bootstrap)" : ""}`);
+  if (verbose) {
+    for (const entry of plan.puts) console.log(`  PUT ${entry.path}`);
+    for (const entry of plan.deletes) console.log(`  DELETE ${entry.path}`);
+  }
+
+  if (dryRun) process.exitCode = 0;
+  else {
+    await executePool(plan.puts, "put");
+    await executePool(plan.deletes, "delete");
+    writeFileSync(nextStatePath, `${JSON.stringify(buildRemoteState(publication), null, 2)}\n`);
+    await runWithRetry(`publish ${stateKey}`, [
+      "r2", "object", "put", stateObject,
+      "--file", nextStatePath,
+      "--content-type", "application/json",
+      "--cache-control", "no-store",
+      "--remote"
+    ]);
+    console.log(`Asset sync complete: ${plan.puts.length} uploaded, ${plan.deletes.length} removed, ${plan.unchanged.length} skipped; state manifest published last`);
+  }
+} finally {
+  rmSync(temporaryDirectory, { recursive: true, force: true });
+}
