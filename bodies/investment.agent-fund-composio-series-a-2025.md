@@ -1,1 +1,1 @@
-# Agent Fund → Composio Series A (2025)
+# Agent Fund → Composio 2025 年 Series A

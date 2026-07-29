@@ -1,1 +1,1 @@
-# Gokul Rajaram → Composio Series A (2025)
+# Gokul Rajaram → Composio 2025 年 Series A

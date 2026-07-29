@@ -1,1 +1,1 @@
-# Elevation Capital → Composio Series A (2025)
+# Elevation Capital → Composio 2025 年 Series A

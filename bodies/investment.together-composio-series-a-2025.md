@@ -1,1 +1,1 @@
-# Together Fund → Composio Series A (2025)
+# Together Fund → Composio 2025 年 Series A

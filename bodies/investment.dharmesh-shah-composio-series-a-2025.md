@@ -1,1 +1,1 @@
-# Dharmesh Shah → Composio Series A (2025)
+# Dharmesh Shah → Composio 2025 年 Series A

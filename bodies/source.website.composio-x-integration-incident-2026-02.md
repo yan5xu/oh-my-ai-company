@@ -1,15 +1,12 @@
-# Composio February 2026 X integration incident
+# Composio 2026 年 2 月 X 集成故障
 
-Published: 2026-02-13.
+发布时间：2026-02-13。
 
-URL: <https://composio.dev/blog/incident-report-february-9-2026>
+URL：<https://composio.dev/blog/incident-report-february-9-2026>
 
-Composio reported X/Twitter authentication failures from February 9-12 after X
-API policy and enforcement changes affected its managed-credential approach.
-The resolution required users to supply their own X Developer credentials and
-reconnect.
+Composio 报告，X API policy/enforcement 变化影响其 managed credential 路径，
+导致 2 月 9-12 日出现 X/Twitter 认证失败。最终方案要求用户提供自己的
+X Developer credentials 并重新连接。
 
-The report said no data loss or security implications were identified for
-that incident. It provides a concrete example of upstream provider policy and
-pricing risk propagating into a managed integration.
-
+报告称本次事件没有发现数据丢失或安全影响。它是上游 provider 政策与定价风险向
+托管集成传导的具体案例。

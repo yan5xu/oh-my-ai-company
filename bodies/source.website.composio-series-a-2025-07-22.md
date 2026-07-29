@@ -1,15 +1,12 @@
-# Composio founder funding announcement
+# Composio 创始人融资公告
 
-Published: 2025-07-22.
+发布时间：2025-07-22。
 
-URL: <https://composio.dev/blog/series-a>
+URL：<https://composio.dev/blog/series-a>
 
-Soham Ganatra wrote that Composio had raised $29M in total funding and was
-building shared learning infrastructure and evolving skills for agents. The
-post frames the long-term thesis as agents learning from tool interactions and
-sharing improvements across the ecosystem.
+Soham Ganatra 写道，Composio 累计融资 $29M，正在为 Agent 建设 shared learning
+infrastructure 和可演进 Skill。文章把长期 thesis 描述为 Agent 从工具交互中学习，
+并在生态中共享改进。
 
-The post supports the company's stated financing total and product vision. It
-does not independently validate revenue, adoption, learning performance, or
-the allocation of the implied earlier $4M.
-
+该文章支持公司的融资总额与产品愿景口径，但不能独立验证收入、采用、学习效果，
+也不能说明隐含的早期 $4M 如何分配。

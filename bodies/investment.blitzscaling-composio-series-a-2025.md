@@ -1,1 +1,1 @@
-# Blitzscaling Ventures → Composio Series A (2025)
+# Blitzscaling Ventures → Composio 2025 年 Series A

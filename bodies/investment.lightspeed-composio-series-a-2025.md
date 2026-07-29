@@ -1,1 +1,1 @@
-# Lightspeed Venture Partners → Composio Series A (2025)
+# Lightspeed Venture Partners → Composio 2025 年 Series A

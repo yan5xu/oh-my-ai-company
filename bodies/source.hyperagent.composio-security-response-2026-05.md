@@ -1,23 +1,20 @@
-# Hyperagent response to Composio security incident
+# Hyperagent 对 Composio 安全事件的响应
 
-Published: 2026-05-23; updated: 2026-05-26.
+发布时间：2026-05-23；更新时间：2026-05-26。
 
-URL: <https://www.hyperagent.com/blog/composio-incident-response/>
+URL：<https://www.hyperagent.com/blog/composio-incident-response/>
 
-Hyperagent said it:
+Hyperagent 表示：
 
-- learned that a small number of its customers' GitHub OAuth tokens were
-  affected;
-- disabled all Composio-powered integrations on 2026-05-23;
-- notified affected users, verified OAuth revocations, and investigated logs;
-- recommended treating connected tokens as potentially exposed;
-- replaced common Composio integrations with first-party Google, GitHub, and
-  Notion integrations, alongside existing native tools and custom MCP support.
+- 得知少量客户的 GitHub OAuth token 受到影响；
+- 于 2026-05-23 停用全部 Composio-powered integration；
+- 通知受影响用户、核验 OAuth 撤销并调查日志；
+- 建议把 connected token 视为可能已暴露；
+- 用 first-party Google、GitHub、Notion integration 替换常见 Composio
+  integration，并保留原生工具和 custom MCP。
 
-Hyperagent emphasized that deleting a connection in its UI does not revoke the
-provider-side authorization and that API keys must be rotated at the provider.
+Hyperagent 特别指出，在其 UI 删除 connection 不等于撤销 provider 授权，API
+Key 需要在 provider 侧轮换。
 
-This is an independent downstream-customer incident response. It supports
-blast-radius and migration-cost analysis but does not establish impact for all
-Composio customers.
-
+这是独立下游客户的事件响应，可以支持 blast radius 和迁移成本分析，但不能代表
+所有 Composio 客户的影响范围。

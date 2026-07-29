@@ -1,16 +1,14 @@
 # Guillermo Rauch
 
-Founder and CEO of Vercel and an angel investor.
+Vercel 创始人兼 CEO、天使投资人。
 
-## Confirmed Vault relationships
+## 已确认的 Vault 关系
 
-- Listed among the angel participants in Composio's 2025 Series A:
-  [[source.prnewswire.composio-series-a-2025-07-22]].
-- Listed among the angels in Viktor's 2026 Series A:
-  [[source.eu-startups.viktor-series-a-2026-05-20]].
+- Composio 2025 年 Series A 的天使参与方：
+  [[source.prnewswire.composio-series-a-2025-07-22]]。
+- Viktor 2026 年 Series A 的天使参与方：
+  [[source.eu-startups.viktor-series-a-2026-05-20]]。
 
-## Boundary
+## 边界
 
-These sources support participation in the named financings. They do not
-establish allocation, ownership percentage, board role, or continuing
-operating involvement.
+上述来源支持其参与相应融资，但不能证明具体分配、持股比例、董事席位或持续运营参与。

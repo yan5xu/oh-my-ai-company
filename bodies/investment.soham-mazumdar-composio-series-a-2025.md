@@ -1,1 +1,1 @@
-# Soham Mazumdar → Composio Series A (2025)
+# Soham Mazumdar → Composio 2025 年 Series A

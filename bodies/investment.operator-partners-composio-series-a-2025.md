@@ -1,1 +1,1 @@
-# Operator Partners → Composio Series A (2025)
+# Operator Partners → Composio 2025 年 Series A

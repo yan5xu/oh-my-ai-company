@@ -1,9 +1,7 @@
 # Together Fund
 
-Venture-capital firm identified by Composio as an existing investor that
-participated in the company's 2025 Series A.
+Composio 将其列为既有投资人，并称其参与了 2025 年 Series A。
 
-## Evidence
+## 证据
 
 - [[source.prnewswire.composio-series-a-2025-07-22]]
-

@@ -1,7 +1,7 @@
 # Blitzscaling Ventures
 
-Venture-capital firm listed in Composio's 2025 Series A announcement.
+Composio 2025 年 Series A 公告列出的风险投资机构。
 
-## Evidence
+## 证据
 
 - [[source.prnewswire.composio-series-a-2025-07-22]]

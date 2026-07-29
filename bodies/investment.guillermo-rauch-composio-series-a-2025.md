@@ -1,1 +1,1 @@
-# Guillermo Rauch → Composio Series A (2025)
+# Guillermo Rauch → Composio 2025 年 Series A

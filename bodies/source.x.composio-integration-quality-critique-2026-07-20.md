@@ -1,15 +1,12 @@
-# X developer critique: integration breadth versus depth
+# X 开发者批评：集成广度与深度
 
-Published: 2026-07-20; collected: 2026-07-29.
+发布时间：2026-07-20；采集时间：2026-07-29。
 
-URL: <https://x.com/CodeWithTamara/status/2079157322237030850>
+URL：<https://x.com/CodeWithTamara/status/2079157322237030850>
 
-Tamara Martinović argued that agent-integration platforms such as Composio and
-Arcade can be effective for demos but may optimize breadth over depth. She
-cited thin tool coverage and excessively large outputs as reasons to prefer
-direct APIs for a serious paid product.
+Tamara Martinović 认为 Composio、Arcade 等 Agent integration platform 对 demo
+有效，但可能用深度换广度。她以工具覆盖较薄、输出过大为由，认为严肃付费产品更适合
+direct API。
 
-This is one developer's opinion, not a systematic benchmark. It is retained
-as a testable risk hypothesis: toolkit depth, output shape, and context cost
-must be evaluated per integration.
-
+这是一位开发者的观点，不是系统 benchmark。它被保留为可测试风险假设：每个
+integration 都需要验证 Toolkit 深度、输出形态和 context cost。
