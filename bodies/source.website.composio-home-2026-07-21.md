@@ -1,3 +1,28 @@
-2026-07-21 Composio 官网公开定位为 Agent tool/integration runtime，主张 just-in-time tool calls、secure delegated auth、sandboxed environments 与 1,000+ apps。页面明确 managed OAuth、token refresh、granular permission scoping、remote sandbox 和 tool execution plan。
+# Composio homepage rolling snapshot
 
-它是 CoreSpeed 在 connectors/auth/tool runtime 上的直接参照，公开开发与产品状态更成熟。CoreSpeed 的差异化主张在 portable memory、plain-English policy、Agent Pay 与 One Bill，但这些目前仍是 waitlist 设计。该 source 只用于竞品机制对照，不把 Composio 的覆盖或客户能力迁移给 CoreSpeed。
+First collected: 2026-07-21. Re-checked: 2026-07-29.
+
+URL: <https://composio.dev/>
+
+## Visible and server-rendered facts
+
+- The homepage describes Composio as just-in-time tool calls, secure delegated
+  auth, sandboxed environments, and parallel execution across 1,000+ apps.
+- Navigation separates FOR YOU, Developer Platform, CLI, Enterprise, and MCP
+  Gateway.
+- The page presents managed authentication, triggers, context-aware sessions,
+  tool discovery, and model/framework independence.
+- FOR YOU is described as a personal path for Claude, Codex, Cursor, OpenClaw,
+  and Hermes; the Developer Platform is described as SDK, execution, and auth
+  infrastructure.
+- The server-rendered HTML contains `template` elements marked
+  `data-agent-readable` and `data-agent-signup-instructions`. At the 2026-07-29
+  re-check their text told agents that signup CTAs lead to the developer flow
+  and explicitly required confirming with the user before completing signup
+  or entering credentials.
+
+## Boundary
+
+Homepage counts and outcomes are vendor claims. The agent-readable template is
+an observed implementation fact; its effect on every agent or crawler was not
+tested.
