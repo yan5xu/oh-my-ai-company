@@ -37,6 +37,17 @@
 
 官方模型卡、方法与截图：[[source.deepseek.v4-flash-0731-model-card]] [[source.deepseek.v4-flash-0731-release]]
 
+## 与现有 V4-Pro 的价格比较
+
+| 每 1M tokens | V4 Flash 0731 | 当前 V4-Pro | Flash 相对 Pro |
+| --- | ---: | ---: | ---: |
+| 输入，cache hit | $0.0028 | $0.003625 | 低约 22.8% |
+| 输入，cache miss | $0.14 | $0.435 | 低约 67.8% |
+| 输出 | $0.28 | $0.87 | 低约 67.8% |
+| 并发上限 | 2500 | 500 | Flash 为 5 倍 |
+
+1M 未缓存输入加 1M 输出的名义费用为 Flash $0.42、Pro $1.305，Pro 约为 Flash 的 3.11 倍。大量输入命中缓存时，差距会明显缩小；实际每任务成本仍取决于输出长度、重试和成功率。这里比较的是 2026-07-31 仍在售的 **V4-Pro 当前版本**，不是尚未发布的 V4-Pro 正式升级版。[[source.deepseek.v4-flash-0731-pricing]]
+
 ## 独立证据
 
 Artificial Analysis 给出 Intelligence Index 50 和极低价格，支持高 intelligence-per-dollar；但它用约 210M output tokens 完成评测，而同页中位数约 62M，且首日没有速度结果。[[source.artificial-analysis.deepseek-v4-flash-0731]]
@@ -74,4 +85,3 @@ Artificial Analysis 给出 Intelligence Index 50 和极低价格，支持高 int
 ## 采集边界
 
 本轮只使用 pinixc：官方网页/X、Hugging Face、Artificial Analysis、微信、X、Reddit、Hacker News。小红书对三组查询均返回登录/权限墙，因此记录为未覆盖，不视为无反馈。样本极早、偏开发者和 agent 用户，不能代表大众用户或长期生产。
-
