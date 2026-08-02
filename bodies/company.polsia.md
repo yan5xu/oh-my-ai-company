@@ -1,20 +1,22 @@
 ![Polsia 官网把产品直接定义为“睡觉时替你运营公司”的 AI {wide}](../assets/polsia/hero.png)
 
-> 调研时间：2026-07-15。本文将官网与公开 API 的自报经营数据、创始人访谈、条款/隐私政策、第三方流量估算、社区用户自述和批评性审计分层呈现。Polsia 数据变化很快，文中数字均保留观察日期；“ARR”“active company”“churn”等未经审计且部分定义未公开。
+> 完整调研基线：2026-07-15；有界增量更新：2026-08-02。本文将官网与公开 API 的自报经营数据、创始人访谈、条款/隐私政策、第三方流量估算、社区用户自述和批评性审计分层呈现。Polsia 数据变化很快，文中数字均保留观察日期；“ARR”“active company”“churn”等未经审计且部分定义未公开。最新变化见 [[note.polsia-incremental-update-2026-08-02]]。
 
 ## TL;DR
 
 **Polsia 不是传统的“给公司配几个 AI 员工”，而是一套面向个人创业者的自治公司操作系统：用户输入一个 idea，平台替他选择并提供网站、数据库、邮件、支付、广告和模型等基础设施，再让 Agent 持续写代码、做研究、发推、投广告、回复客户、修 bug 和收款。** 它比 [[company.teamday]]、[[company.sintra]]、[[company.marblism]] 更激进：不是把 Agent 放进现有团队，而是尝试直接生成并运营一家公司。[[source.polsia.homepage-2026-07-15]] [[source.polsia.about-2026-07-15]]
 
-这家公司已经获得真实规模，但公开叙事需要拆账。2026-07-15 重新读取官方 public dashboard API：headline “ARR” 为 **$8.53M**，其中 subscription MRR 为 **$422,889**，即订阅年化约 **$5.07M**；其余约 **$3.46M** 来自把过去 30 天的任务包、广告代投、boost、域名等现金流乘以 12。它是 annual run rate，不等于标准 SaaS ARR，更不等于客户赚到的钱。同期官方还报 9,449 paying users、10,783 active companies、225,241 total companies、12.9% trial-to-paid，以及定义未充分解释的 52.1% 30-day paid churn。[[source.polsia.public-dashboard-api-2026-07-15]]
+这家公司已经获得真实规模，但公开叙事需要拆账。2026-08-02 官方 API 的 headline “ARR” 为 **$9.37M**：subscription MRR 为 **$531,610**，订阅年化约 **$6.38M**；其余约 **$2.99M** 来自把过去 30 天的任务包、广告代投、boost、域名等现金流乘以 12。它是 annual run rate，不等于标准 SaaS ARR，更不等于客户赚到的钱。同期 daily metrics 报 13,366 paying users、14,734 active companies、267,540 total companies、10.3% trial-to-paid，以及定义未充分解释的 55.3% 30-day paid churn。[[source.polsia.public-dashboard-api-2026-08-02]]
 
 **最值得研究的不是“AI 是否真的一个人融了 3000 万美元”，而是 Polsia 把产品、GTM、融资和商业模型做成了同一个闭环。** 实时看板既是产品演示、社会证明和投资人 data room，也是持续可截图、可争议、可传播的内容；公司自动发出的高频产品推文又把每个生成公司变成获客素材。创始人 [[person.ben-cera]] 也承认“零员工”是很强的 marketing story / performance art。[[source.gtmnow.ben-cera-polsia-2026-06-01]] [[concept.live-operating-dashboard-as-gtm]]
 
-产品的主要风险与它的自治程度成正比。条款允许 Agent 代表用户执行广告、邮件、支付、退款和交易动作，但把合法性、成本、权限与结果审查责任主要留给用户；社区中已有多名自称付费用户报告任务循环、token 消耗、站点不可用、取消后扣费或支持无法解决问题。官方实时 feed 也会直接出现失败任务。上述社区样本不能代表全部用户，却和 52.1% 自报 churn、4.8% created-to-active 比例形成了需要持续追踪的同向信号。[[source.polsia.terms-2026-06-19]] [[source.reddit.polsia-agents-of-ai-2026-03-05]] [[source.reddit.polsia-cannot-recommend-2026-06-21]]
+产品的主要风险与它的自治程度成正比。条款允许 Agent 代表用户执行广告、邮件、支付、退款和交易动作，但把合法性、成本、权限与结果审查责任主要留给用户；社区中已有多名自称付费用户报告任务循环、token 消耗、站点不可用、取消后扣费或支持无法解决问题。2026-08 又有具名用户报告 DNS、邮件与支持故障。上述样本不能代表全部用户，却和 55.3% 自报 churn 形成了需要持续追踪的同向信号。[[source.polsia.terms-2026-06-19]] [[source.linkedin.tobayi-howton-polsia-review-2026-08-02]]
 
 ## 产品：不是协作 workspace，而是托管式公司工厂
 
-Polsia 的用户路径是：给出创业想法，平台创建 company shell，自动准备 landing page、数据库、邮件、支付和任务，再每天自我规划并执行工作。创始人称默认节奏包含夜间任务和早晨 recap；用户不需要先选择模型、数据库、托管商或邮件供应商。[[source.polsia.about-2026-07-15]] [[source.gtmnow.ben-cera-polsia-2026-06-01]]
+Polsia 当前有两条公开 onboarding：从 idea 创建新公司，或提交现有公司 website 进入 `GROW MY COMPANY`。创建路径再分为让 Polsia 自己出 idea 与输入自己的 idea。平台随后创建或接管 company shell，准备 landing page、数据库、邮件、支付和任务，再持续自我规划并执行工作。[[source.polsia.onboarding-2026-08-02]] [[source.polsia.about-2026-07-15]]
+
+![Polsia 将新公司与已有公司拆成两条正式入口](../assets/polsia/onboarding-two-paths-2026-08-02.png)
 
 ![Product Hunt 发布时使用的 Polsia 官方产品形象](../assets/polsia/ph-product.png)
 
@@ -42,6 +44,10 @@ Polsia 的用户路径是：给出创业想法，平台创建 company shell，�
 - tweet/email 数量不等于有效触达，更不能替代 deliverability、投诉率和转化率。
 
 ## 规模：官方数字很大，但必须拆口径
+
+### 2026-08-02 增量
+
+相对 2026-07-15，官方自报 headline mixed run rate +9.8%、subscription MRR +25.7%、paying users +41.5%、active companies +36.6%；同时 trial-to-paid 从 12.9% 降至 10.3%，30-day paid churn 从 52.1% 升至 55.3%。这意味着拉新与付费规模增长很快，但留存风险没有缓解。完整拆账和字段差异见 [[source.polsia.public-dashboard-api-2026-08-02]]。
 
 官方 public API 在 computed_at=2026-07-14 的核心字段如下：[[source.polsia.public-dashboard-api-2026-07-15]]
 
@@ -135,6 +141,10 @@ Privacy Policy 说明会收集 prompt、output、自动截图、交互、广告�
 
 ## 社区：不是“一边倒”，但可靠性与计费问题反复出现
 
+2026-07 下旬新增的具名反馈把问题进一步指向生产后端：Tobayi Howton 肯定 AI 前端生成速度，但报告 DNS redirect、邮件静默失败和工单无人响应；Eric Ferreira 则认为 Polsia 暂不适合纯绿地创业，已有收入、明确 pain point 和测试预算的企业更值得尝试。[[source.linkedin.tobayi-howton-polsia-review-2026-08-02]] [[source.linkedin.eric-ferreira-polsia-review-2026-08-02]]
+
+Reddit 新讨论中，一名匿名用户自述使用一个月只得到少量未转化 leads；另一线程主要质疑经营说法缺少独立验证。前者是弱使用样本，后者不是产品评测。[[source.reddit.polsia-profit-question-2026-07-27]] [[source.reddit.polsia-claims-verification-2026-07-30]]
+
 Reddit 的公开讨论同时有正面惊喜、怀疑和具体失败。它们都是无法核验身份与付款的个人自述，只能作为 S3 线索：
 
 - 2026-03 的 120-comment 讨论里，有用户认为 setup 很快，也有人称任务昂贵、反复 hallucinate、消耗 credits 后停止；另有人展示了可运行结果。[[source.reddit.polsia-agents-of-ai-2026-03-05]]
@@ -168,6 +178,10 @@ Similarweb 的 similar sites、Stripe/Google 等 referral/outbound 不是直接�
 
 ## 关键判断与风险
 
+### 2026-08-02 更新判断
+
+规模增长进一步确认 demand 和分发，但 trial conversion 下滑、paid churn 升至 55.3%、生产后端投诉仍在，使“客户公司成功率”成为比 created/active company 更重要的下一指标。新增 `GROW MY COMPANY` 入口可能是产品从绿地公司生成器向已有业务执行层扩展；当前证据只证明入口和少量用户 fit，不证明迁移能力已成熟。[[note.polsia-incremental-update-2026-08-02]]
+
 ### 证据较强的事实
 
 - Polsia 已形成从 idea 到代码、营销、广告、邮件、支付和持续任务的托管式自治公司产品；
@@ -197,9 +211,9 @@ Similarweb 的 similar sites、Stripe/Google 等 referral/outbound 不是直接�
 
 ## 证据导航
 
-- 产品与运行：[[source.polsia.homepage-2026-07-15]]、[[source.polsia.about-2026-07-15]]、[[source.polsia.live-dashboard-2026-07-15]]、[[source.polsia.public-dashboard-api-2026-07-15]]
+- 产品与运行：[[source.polsia.homepage-2026-07-15]]、[[source.polsia.about-2026-07-15]]、[[source.polsia.onboarding-2026-08-02]]、[[source.polsia.public-dashboard-api-2026-08-02]]
 - 定价与责任：[[source.polsia.terms-2026-06-19]]、[[source.polsia.privacy-2026-06-24]]、[[source.polsia.subprocessors-2026-07-15]]
 - Launch 与人物：[[source.polsia.producthunt-2026-02-18]]、[[source.linkedin.ben-cera-polsia-funding-2026-05-22]]、[[source.gtmnow.ben-cera-polsia-2026-06-01]]
 - 流量与搜索：[[source.similarweb.polsia-2026-h1]]、[[source.semrush.polsia-2026-07-15]]
-- 社区与中文：[[source.reddit.polsia-agents-of-ai-2026-03-05]]、[[source.reddit.polsia-funding-discussion-2026-05-24]]、[[source.reddit.polsia-cannot-recommend-2026-06-21]]、[[source.bnext.polsia-2026-05-28]]、[[source.36kr.polsia-2026-05-26]]
-- 本轮判断与过程：[[note.polsia-product-takeaway-2026-07-15]]、[[note.polsia-research-run-2026-07-15]]
+- 社区与中文：[[source.linkedin.tobayi-howton-polsia-review-2026-08-02]]、[[source.linkedin.eric-ferreira-polsia-review-2026-08-02]]、[[source.reddit.polsia-profit-question-2026-07-27]]、[[source.reddit.polsia-cannot-recommend-2026-06-21]]、[[source.bnext.polsia-2026-05-28]]
+- 本轮判断与过程：[[note.polsia-product-takeaway-2026-07-15]]、[[note.polsia-incremental-update-2026-08-02]]、[[note.polsia-research-run-2026-07-15]]

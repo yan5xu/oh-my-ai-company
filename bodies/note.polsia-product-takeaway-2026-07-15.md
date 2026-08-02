@@ -6,6 +6,10 @@
 4. **“零员工”更像组织设计实验加叙事约束。** 它迫使 Ben dogfood，也依赖四家合作公司的工程师、基础设施 vendor 和人类最终判断。这里值得学的是约束，不是字面 headcount。
 5. **最大的产品问题是可靠性与责任不对称。** Agent 能发信、投广告、收退款，用户却承担成本与合规；社区失败样本与官方 52.1% 30-day paid churn 同向，后续应追踪 accepted outcome 与 cohort，而不是更多 created companies。
 
+## 2026-08-02 增量
+
+规模增长没有改变核心判断：subscription MRR、paying users 和 active companies 均快速上升，但 trial-to-paid 降至 10.3%，30-day paid churn 升至 55.3%。新增 `GROW MY COMPANY` 入口与具名用户反馈共同提示，Polsia 当前更可能适合已有业务、明确 workflow 和可持续验收，而不是承诺用户从零自动获得业务结果。[[note.polsia-incremental-update-2026-08-02]]
+
 ## 对 founder 的启发
 
 - 实时、可复算的 operating receipt 比普通案例页更有传播力，但指标定义必须经得住反向审计；
