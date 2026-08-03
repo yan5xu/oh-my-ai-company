@@ -5,7 +5,7 @@
 ## 使用边界
 
 - 活动方公开页确认日期、地点和活动形态；Day 1 人物来自 Founder Park 议程原图。[[source.event.agi-playground-2026-luma]] [[source.event.agi-playground-2026-agenda]]
-- “现场人物”表示被公开议程点名，不等于已经签到；MiniMax 仍是待定，Ateve 无法消歧。
+- “现场人物”表示被公开议程点名，不等于已经签到；Luma 当前官方议程已确认 Eileen Weng / Ateve，纠正了先前转引版议程遗漏。
 - 公司经营数字若来自公司公告，统一标为公司自报；合作伙伴、同场边会不等于客户、合作或投资关系。
 - 以下“与 Parall 的关系”只是产品邻近度分类，不是合作建议或战略判断。
 
@@ -16,7 +16,7 @@
 | Genspark | Eric Jing，CEO | 直接竞品：通用 AI workspace / agent execution | Business 客户实际部署单位；agent 的长期身份、权限与协作治理 |
 | Simular | Ang Li，Co-Founder & CEO | 直接竞品/运行时相邻：computer-use desktop agent | 学习成功 workflow 的存储与权限边界；多人、多 agent 与审计/回滚状态 |
 | WIZ.AI | Jianfeng Lu，Co-Founder & CEO | 相邻产品 / GTM：企业语音 agent | 100M+ 月调用中 production 与人工转接口径；企业权限、录音和跨国数据边界 |
-| Ateve | 未确认 | 未分类 | 先问完整公司名、官网、产品和本人角色；没有实体前不做比较 |
+| Ateve | Eileen Weng，Founder & CEO | 相邻基础设施：面向 agent 的 Web Search API | 法律实体及与 Bocha 的关系；已上线客户、定价、ZDR/SOC 2/SLA 的可核验边界 |
 | eclicktech / zMaticoo | Bill Cao，zMaticoo VP | GTM 潜在触点：广告投放与 app 变现 | AI agent 是客户产品还是内部提效；ADX 的 API、归因、品牌安全和人工审批 |
 | Airwallex | Kai Wu，Chief Revenue Officer | 支付/金融基础设施潜在触点 | Airi/T:0 在 APAC 的真实 beta 状态；agent payment 的授权、限额、撤销和审计 API |
 | MiniMax | 议程仍标“待定” | 模型供应与生态潜在触点 | 先确认代表身份；企业 API 的主要 agent use case、区域服务和数据边界 |
@@ -61,9 +61,19 @@
 
 ## 4. Ateve
 
-**实体状态**：未完成消歧。精确名称 `Ateve` 没有出现在公开议程、活动伙伴墙或可核验的 AI 公司搜索结果中；现有结果主要指向法国工程公司或 `Steve AI`，均不能证明是目标对象。
+**实体与官网**：目标对象已确认是 `ateve.ai` 的 Ateve / ATEVE，不是法国同名工程公司或 Steve AI。Luma 官方 Day 1 议程明确列出 **Eileen Weng，Founder & CEO，Ateve**；她的公开档案也写明 `Founder & CEO of ATEVE | Co-founder of Bocha`。[[source.event.agi-playground-2026-luma]] [[source.ateve.field-brief-2026-08-03]]
 
-**最小完成问题**：现场先确认 badge/名片上的完整公司名、官方域名、产品一句话和本人角色。未取得这些信息前，融资、产品、客户和 Parall 关系均保持未知。
+**产品/客户**：Ateve 是面向 AI agents 的 Web Search API，提供 Search/Extract、Python/Node.js/Java SDK、MCP、CLI/Skills 和 OpenAI tool-calling。官网把自身描述为 real-time search、live entity data 与 original-source verification 的 retrieval layer。公开页面没有客户名称、请求量或收入；定价仍显示占位符。
+
+**规模/可信事实**：LinkedIn 公司页标注 San Francisco、11-50 人，但这是公司自报。官网声称 ZDR、SOC 2 Type II、99.99% SLA 及 benchmark 领先；当前 Trust Center/Security 链接禁用、Privacy/Terms 为 404，未取得报告或条款，不能独立验证。融资、收入、客户数和市场份额未知。
+
+**法律/品牌关系**：Eileen Weng 同时是 Bocha 联合创始人，Bocha 官方也提供面向 AI 的 Search/Reranker API，说明人物和产品类别连续。但没有 Ateve/Bocha 官方材料说明 Ateve 是 Bocha 海外品牌、子公司、spinout 或独立新公司，也没有 Ateve 法律公司全称。两者不得合并，Bocha 的融资、客户和规模不得继承给 Ateve。
+
+**与 Parall 的关系**：相邻基础设施/潜在工具供应，提供 agent 所需的 Web search 与 retrieval，不是已确认的完整 agent runtime 或团队协作竞品。
+
+**现场问题**：
+1. Ateve 的法律实体是什么，与 Bocha 的关系是独立公司、海外品牌、子公司还是 spinout？技术索引、团队和客户是否共享？
+2. 当前已付费客户、真实价格和请求规模是什么；ZDR、SOC 2、99.99% SLA 与 benchmark 能否提供公开方法、报告或合同边界？
 
 ## 5. eclicktech / zMaticoo
 
@@ -133,11 +143,11 @@
 4. Genspark/Simular 与 Parall 在同一层完整竞争；当前只确认部分 workspace、computer-use 和 agent execution 重叠。
 5. Airwallex 的 Airi/T:0 已全面开放；公告明确存在 beta 和未来计划。
 6. MiniMax 已完成 20 亿美元私募；法定口径是融资计划。
-7. Ateve 已被正确识别；当前没有足够实体证据。
+7. Ateve 与 Bocha 是同一法律实体或可共享融资、客户和规模；当前只确认人物与产品类别连续。
 
 ## 更新触发器
 
-- CP 现场拿到 Ateve 的完整实体信息；
+- CP 现场确认 Ateve 法律实体、与 Bocha 的正式关系或取得可核验 Trust/SLA/客户材料；
 - MiniMax speaker 从“待定”变成实名；
 - 现场演示或公司代表给出可公开验证的新产品/客户口径；
 - 活动方更新 agenda、字幕或 photo feed，能确认人物实际出席；

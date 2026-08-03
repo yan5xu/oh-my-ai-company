@@ -9,3 +9,17 @@
 
 Pocket Kit 只提供 Agenda、实时字幕和照片流入口，没有公开完整 speaker/company roster。活动页显示的参会人数和品牌露出不能证明某个具体人已到场，也不能证明合作、客户或投资关系。
 
+## 2026-08-03 议程素材增量
+
+Luma 活动页当前嵌入的 Founder Park Day 1 官方议程原图明确显示，10:40-11:40 圆桌 `From Conversation to Execution: What's Still Missing for Agents to Deliver Autonomously?` 的嘉宾包括：
+
+- Jianfeng Lu，Co-Founder & CEO，WIZ.AI；
+- **Eileen Weng，Founder & CEO，Ateve**；
+- Bill Cao，zMaticoo VP，eclicktech；
+- Kai Wu，Chief Revenue Officer，Airwallex；
+- Shaoyang Hu，Coordinator，GeekPark。
+
+因此，先前基于转引版议程图得出的“Ateve 未出现在公开议程”结论已被当前 Luma 官方素材纠正。议程仍只能证明活动方公开安排，不能证明本人已经签到。
+
+![Luma 官方 Day 1 议程](../assets/agi-playground-2026/agenda-day1-luma-2026-08-03.png)
+
