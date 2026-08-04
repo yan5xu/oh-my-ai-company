@@ -1,6 +1,6 @@
 # 自顶向下理解 OpenAI 的 Persistent Agent 讨论
 
-> Cutoff：2026-08-03。对象：网络上 OpenAI 及相关生态对 persistent agent / persistent entities / long-horizon agents 的公开讨论。结论为 research-complete，不是 OpenAI 路线承诺或产品发布时间预测。
+> Cutoff：2026-08-04。对象：网络上 OpenAI 及相关生态对 persistent agent / persistent entities / long-horizon agents 的公开讨论。结论为 research-complete，不是 OpenAI 路线承诺或产品发布时间预测。
 
 ## 先给结论
 
@@ -23,13 +23,32 @@ Persistent Agent
 
 ## 讨论源头
 
-2026-07-25 的 Relentless 访谈中，Sam Altman 在 Codex 段落讨论了下一波 Agent。原视频可确认 `41:20` 开始谈 Codex；多个带原视频和时间戳的公开摘要把 `41:36` 附近概括为：
+2026-07-25 的 Relentless 访谈中，Sam Altman 在 Codex 段落讨论了下一波 Agent。原视频可确认 `41:20` 开始谈 Codex；2026-08-04 又通过 Pinixc 核验到一段保留原画面和字幕的 30 秒公开摘录，画面直接显示 Sam 使用了 `persistent agents, chiefs of staff, co-workers, colleagues` 这一组表达。完整访谈的 YouTube 自动字幕轨仍返回空正文，因此不补造完整上下文逐字稿。[[source.x.podcast-alpha-sam-altman-persistent-agents-2026-07-26]]
 
 1. 第一波是 chatbots；
 2. 第二波是 coding agents；
 3. 下一波是 persistent agents，表现得像 chief of staff、coworker、colleague。
 
-这段话应理解为产品方向和交互范式判断，而不是正式产品规格。YouTube 自动字幕元数据存在，但本轮无法取得字幕正文，所以具体措辞保留为高可信第三方转述，见 [[source.youtube.sam-altman-relentless-persistent-agents-2026-07-25]] 与 [[source.x.sam-altman-persistent-agents-summary-2026-07-25]]。
+这段话应理解为 CEO 对下一波产品形态的公开判断，而不是 OpenAI 正式产品规格、发布时间或可用性承诺，见 [[source.youtube.sam-altman-relentless-persistent-agents-2026-07-25]] 与 [[source.x.sam-altman-persistent-agents-summary-2026-07-25]]。
+
+## 第一层术语与事实地图
+
+| 时间 | OpenAI 实际使用的术语 | 证据层级 | 已确认含义 | 不能据此声称 |
+|---|---|---|---|---|
+| 2025-03-11 | agents、single/multi-agent workflows | 公司正式发布 | Responses API、tools、Agents SDK、handoff、guardrail、trace 等构建原语 [[source.openai.agent-building-blocks-2025-03-11]] | 已有稳定身份、长期记忆或持续运行实体 |
+| 2025-04-10 | memory、saved memories、chat history | 公司正式产品更新 | ChatGPT 跨对话个性化，可由用户管理与关闭 [[source.openai.chatgpt-memory-update-2025-04-10]] | memory 等于任务状态、职责或 Agent 生命周期 |
+| 2025-05-21 | background mode、long-running tasks | 公司正式 API 发布 | 单次耗时任务异步执行，可轮询/恢复事件，减少 timeout 影响 [[source.openai.responses-background-launch-2025-05-21]] | Agent 会跨任务、跨天自主工作 |
+| 当前 API docs，2026-08-04 回读 | durable identifier、long-running object | 正式产品实现文档 | Conversations API 跨 session/device/job 保存 message、tool call 和 tool output [[source.openai.api-conversation-state-2026-08-03]] | durable conversation object 就是完整 persistent agent |
+| 2026-02-05 | AI coworkers、shared context、identity、permissions、memory | 公司正式发布，有限客户 | Frontier 将 Agent 按企业成员建模，并提供语义层、执行环境和治理 [[source.openai.frontier-persistent-coworkers-2026-08-03]] | Frontier 已对所有用户开放或覆盖所有 Agent 场景 |
+| 2026-02-23 | long-horizon tasks、long-running teammates、durable project memory | OpenAI 员工在官方开发者博客公开的实验 | 25 小时 Codex 实验依靠 repo 文件、里程碑、验证与 agent loop 保持连续性 [[source.openai.codex-long-horizon-tasks-2026-02-23]] | 这是生产 rollout，或模型自身已有完整长期记忆 |
+| 2026-04-22 | Workspace agents、long-running workflows、memory、shared agents | 公司正式产品，research preview | 云端共享 Agent、离线继续、计划执行、Slack、专属 workspace、审批和审计 [[source.openai.workspace-agents-2026-04-22]] | 已面向所有用户正式 GA；页面所列未来 triggers 等已全部上线 |
+| 2026-05-27 | persistent agents | OpenAI 官方客户案例中的 Warp 产品语言 | Warp/Oz 用 OpenAI 模型编排跨时间、本地/云端 Agent [[source.openai.warp-persistent-agents-2026-08-03]] | Oz 是 OpenAI 自有产品，或案例可代表普遍可靠性 |
+| 2026-06-11 | long-running agents、persistent workplace | 公司收购公告 | Ona 方向为 Codex 提供客户控制的持久云工作场所 [[source.openai.ona-persistent-environments-2026-08-03]] | 收购能力已全部并入当前 Codex 产品 |
+| 2026-07-20 | long-horizon models、trajectory monitoring | 公司正式安全披露 | 长运行提高绕过约束和累积风险，需完整轨迹监控、暂停、干预、恢复 [[source.openai.long-horizon-safety-2026-08-03]] | 长期运行已达到无需人类监督的可靠性 |
+| 2026-07-22 | production agents、continuous improvement、controlled release | 公司正式企业产品，有限公开 | Presence 把政策、批准动作、转人工、评估和人批准更新组成部署闭环 [[source.openai.presence-2026-07-22]] | Presence 是通用、自助式 persistent coworker |
+| 2026-07-25 | persistent agents、chiefs of staff、co-workers、colleagues | CEO 公开表达，不是产品发布 | Sam 把它称为 chatbots、coding agents 之后的第三波 | 已存在统一产品、明确发布日期或具体对象模型 |
+
+这里需要特别区分：`agentic workflow` 是“模型如何调用工具并完成多步流程”的广义开发范式；`background` 描述一次运行的异步性；`long-horizon` 描述任务持续时间与连贯性；`durable` 在当前 API 中主要描述状态对象或外部化项目记忆；`memory` 描述历史信息的保存与提取；`persistent agent` 才把身份、状态、环境、权限、触发和治理组合成长期工作实体。它们相邻，但不是同义词。
 
 ## OpenAI 正在把哪些层做成产品
 
@@ -38,6 +57,8 @@ Persistent Agent
 [[source.openai.frontier-persistent-coworkers-2026-08-03]] 已经把 Agent 按“企业成员”建模：共享业务上下文、onboarding、组织语言、反馈学习、记忆、身份、权限和边界。Agent 可从 ChatGPT、Atlas 或现有业务应用进入，也可由 OpenAI、企业自己或其他供应商提供。
 
 这比单一聊天助手多了一层组织关系：企业不只问“模型能不能完成任务”，还要回答“谁拥有这个 Agent、它属于哪里、能看什么、能做什么、如何考核”。
+
+[[source.openai.workspace-agents-2026-04-22]] 是更直接的产品化证据：团队可以创建共享、云端运行、具备专属 workspace 与 memory 的 Agent，并从 ChatGPT 或 Slack 使用。它验证了 persistent-agent 组合中的共享、离线运行、计划任务、审批和审计，但当时仍是 research preview。
 
 ### 2. 给 Agent 一个不会随会话消失的工作场所
 
@@ -49,7 +70,12 @@ Persistent environment 持有文件、代码、工具、系统上下文与受限
 
 - [[source.openai.api-conversation-state-2026-08-03]]：Conversation 是跨 session/device/job 的 durable state object；
 - [[source.openai.api-background-mode-2026-08-03]]：后台 Response 在连接断开后继续，可查询和取消；
+- [[source.openai.codex-long-horizon-tasks-2026-02-23]]：长任务通过 repo 文件保存规格、计划、状态、决策和验证记录，形成 durable project memory；
 - [[source.openai.warp-persistent-agents-2026-08-03]]：Warp/Oz 展示 control plane、周期任务、持久记忆、context compaction、subagents 和人工审核如何组合。
+
+### 4. 从一次性部署转向受控持续改进
+
+[[source.openai.presence-2026-07-22]] 把“持续”限定在明确企业任务中：生产会话和转接暴露差距，Codex 提议修改，团队对照测试并批准受控发布。这里的 Agent 不自行改写政策；持续改进仍受版本、评估和人类批准约束。
 
 这些是 persistent agent 的零件，但单独任何一个都不是完整产品：
 
